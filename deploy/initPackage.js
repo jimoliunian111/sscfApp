@@ -46,10 +46,23 @@ function writeFile(arr, data, fileStr) {
   arr.map(item => {
     obj['build:' + item] = 'cross-env NODE_ENV=production env_config=prod route=' + item + ' node build/build.js'
   })
-  data.scripts = { ...data.scripts,
+  let fixation = {
+    "dev": "node build/dev-server.js",
+    "dev:beta": "cross-env NODE_ENV=beta node build/dev-server.js",
+    "build:beta": "cross-env NODE_ENV=beta node build/build.js",
+    "build:dev": "cross-env NODE_ENV=development node build/build.js",
+    "beta": "node build/beta.js",
+    "deploy:beta": "sh ./beta-build.sh",
+    "deploy": "sh ./build.sh",
+    "start": "npm run dev",
+    "initConf": "node deploy/initPackage",
+    "build": "node build/build.js",
+  }
+  data.scripts = {
+    ...fixation,
     ...obj
   }
-  fs.writeFileSync(fileStr, JSON.stringify(data));
+  fs.writeFileSync(fileStr, JSON.stringify(data, null, 2));
   console.log('package.json文件设置成功')
 }
 getAllDirs()
