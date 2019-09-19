@@ -1,0 +1,24 @@
+.list-container {
+  padding: 0 0.32rem;
+}
+.list-item {
+  position: relative;
+  width: 100%;
+  height: 1.333333rem;
+  border-bottom: 2px solid #F5F5F5;
+  color: #333;
+  font-size: 0.4rem;
+  vertical-align: middle;
+  align-items: center;
+  display: flex;
+}
+.list-item .list-arrow {
+  position: absolute;
+  right: 0;
+  top: calc(50% - .26rem);
+}
+.detail-list-title {
+  color: #333;
+  font-size: 0.48rem;
+  margin: .6rem 0;
+}

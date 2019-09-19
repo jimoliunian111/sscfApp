@@ -1,0 +1,149 @@
+
+.main-content .main-content-item:last-child {
+  /* border-bottom: 0; */
+}
+.main-content-item {
+  padding: .32rem 0;
+  border-bottom: .04rem solid #efefef;
+  display: flex;
+  align-items: center;
+}
+.main-content-item-title {
+  font-size: .4rem;
+  color: #333;
+  width: 31.713%;
+  font-family: PingFangSC-Regular,sans-serif!important;
+}
+.main-content-item-content {
+  font-size: .4rem;
+  color: #333;
+  line-height: 1;
+  width: 68.287%;
+  position: relative;
+  font-family: PingFangSC-Regular,sans-serif !important;
+  display: flex;
+  align-items: center;
+}
+.main-content-item-content input {
+  width: 90%;
+  outline: 0;
+  border: 0;
+  font-family: PingFangSC-Regular,sans-serif !important;
+}
+.main-content-item {
+  padding: .32rem 0;
+  border-bottom: .04rem solid #efefef;
+  display: flex;
+  align-items: center;
+}
+.main-content-item-content-radio {
+  padding: 0 .32rem;
+  height: .666667rem;
+  line-height: .666667rem;
+  border: .026667rem solid #f0f0f0;
+  border-radius: .133333rem;
+  color: #333;
+  margin-right: .2rem;
+}
+.certificate-default-radio {
+  color: #ccc;
+}
+.main-content-item-content-radio.cur {
+  color: #ff9000;
+  border-color: #ff9000;
+}
+.main-content-item-content-radio:last-child {
+  margin-right: 0;
+}
+.main.no-padding-top {
+  padding-top: 0;
+}
+.color-orange {
+  color: #ff9000!important;
+}
+.main-content-item-content-select {
+  width: 95%;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main-content-item-content-select select {
+  -webkit-appearance: none;
+  border: 0;
+  width: 100%;
+  font-family: PingFangSC-Regular,sans-serif!important;
+  background: transparent;
+  z-index: 204;
+  color: #999;
+}
+.main-content-item-content-select select.selected {
+  color: #333;
+}
+.error input::-webkit-input-placeholder {    
+  color: red !important;
+}
+.error input {
+  color: red !important;
+}
+.error span {
+  color: red !important;
+}
+.error >>> .vux-cell-value {
+  color: red !important;
+}
+.error::before {
+  position: absolute;
+  left: -.4rem;
+  content: "";
+  width: .373333rem;
+  height: .373333rem;
+  background-image: url('../image/sinosig/wddg/error-icon.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: .12rem;
+}
+.error .placeholder {
+  color: red !important;
+}
+.error select {
+  color: red !important;
+}
+.placeholder {
+  color: #999;
+}
+.main-content-item .email-lists {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 68.287%;
+  z-index: 2000;
+  background: #fff;
+  border: .04rem solid #efefef;
+}
+.main-content-item .email-lists > li {
+  height: 1.066667rem;
+  line-height: 1.066667rem;
+  font-size: .4rem;
+  color: #414141;
+  padding-left: .306667rem;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+}
+.main-content-item .email-lists>li.selected {
+  background: #ececec;
+}
+.pr {
+  position: relative;
+}
+.validate-input.disabled,
+.check-icon.disabled {
+  pointer-events: none;
+}
+.arrow-right-icon {
+  position: absolute;
+  right: 0;
+  width: .186667rem;
+  height: .346667rem;
+}

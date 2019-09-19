@@ -1,0 +1,41 @@
+.container {
+  padding: 1.333333rem;
+}
+.container .tips-logo {
+  margin: 3rem auto 0;
+  width: 1.866667rem;
+}
+.tips-logo .success-logo {
+  font-size: 2rem;
+  color: #FF9000;
+}
+.tips-words {
+  margin: 0 auto;
+  width: 5.933333rem;
+  font-size: 0.48rem;
+  color: #333;
+  text-align: center;
+}
+.submit-button {
+  margin: 0.933333rem auto 0;
+  width: 6.666667rem;
+  height: 1.066667rem;
+  background-color: #FF9000;
+  border-radius: 0.533333rem;
+  color: #fff;
+  font-size: 0.48rem;
+  text-align: center;
+  line-height: 1.066667rem;
+}
+.select-button {
+  margin: 0.533333rem auto 0;
+  width: 6.666667rem;
+  height: 1.066667rem;
+  border-radius: 0.533333rem;
+  color: #FF9000;
+  font-size: 0.48rem;
+  text-align: center;
+  line-height: 1.066667rem;
+  border: 1px solid #FF9000;
+  box-sizing: border-box;
+}

@@ -1,0 +1,38 @@
+@import '@/contract/vars.scss';
+@import '@/contract/mixins.scss';
+
+.order-wrapper {
+    padding: .24rem .16rem ($fixedFooterPremiumHeight + .266667rem);
+    background: #F5F5F5;
+    .status {
+      background: #fff;
+      border-radius: .266667rem;
+      padding: 0 .4rem;
+      line-height: 1;
+      .name{
+        padding: .386667rem 0;
+        border-bottom: .026667rem solid #F5F5F5;
+        font-size: .506667rem;
+        font-weight: bold;
+        font-family: $PingFangBold;
+        color: #333;
+      }
+      .price{
+        font-size: .693333rem;
+        color: #333;
+        font-weight: bold;
+        line-height: 1;
+        padding: .56rem 0;
+        font-family: $PingFangBold;
+        @include directionCenter(false, true);
+        letter-spacing: -0.013333rem;
+      }
+      .status-txt{
+        color: #FE501C;
+        font-weight: bold;
+        font-family: $PingFangBold;
+        font-size: .346667rem;
+        margin-left: .266667rem;
+      }
+    }
+}

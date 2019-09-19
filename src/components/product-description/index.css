@@ -1,0 +1,187 @@
+.main-tabs {
+  position: relative;
+  padding: 0 .16rem;
+  background: #fff;
+  border-bottom: .026667rem solid #efefef;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  z-index: 9;
+}
+.main-tabs.tab-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.tab-item {
+  flex-direction: row;
+  text-align: center;
+  font-size: .373333rem;
+  color: #333;
+  padding: .373333rem .32rem .32rem;
+  position: relative;
+  white-space:nowrap;
+}
+.tab-item.cur {
+  color: #ff9000;
+}
+.tab-item.cur::after {
+  content: "";
+  height: .08rem;
+  width: 1.573333rem;
+  background: #ff9000;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  border-radius: .04rem;
+}
+.tab-item span {
+  width: 100%;
+  display: block;
+  border-right: .026667rem solid #e6e6e6;
+  box-sizing: border-box;
+}
+.tab-item span:last-child {
+  border-right: 0;
+}
+.product-features {
+  margin-bottom: .24rem;
+}
+.insured-attentions {
+  background: #fff;
+  padding: 0 .32rem .4rem;
+  margin-bottom: .24rem;
+}
+.insured-attentions-content {
+  height: 4rem;
+  font-size: .373333rem;
+  color: #333;
+  padding: .266667rem 0 0;
+  overflow: hidden;
+  font-family: PingFangSC-Regular,sans-serif;
+}
+.insured-attentions-content.cur {
+  height: auto;
+}
+.insured-attentions-more {
+  text-align: center;
+  margin-top: .533333rem;
+}
+.insured-attentions-more p {
+  font-size: .32rem;
+  color: #999;
+  line-height: 1;
+}
+.product-clause {
+  background: #fff;
+  padding: 0 .32rem;
+  margin-bottom: .24rem;
+}
+.product-clause-content-item {
+  padding: .32rem .2rem .32rem 0;
+  color: #333;
+  font-size: .373333rem;
+  border-bottom: .026667rem solid #efefef;
+  position: relative;
+  font-family: PingFangSC-Regular,sans-serif;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.claims-services {
+  background-color: #fff;
+}
+.claims-services .common-title {
+  padding: .4rem .32rem;
+}
+.product-clause-content-item .icon.arrow {
+  position: absolute;
+  right: 0;
+}
+.main .common-title {
+  padding: .4rem 0;
+  border-bottom: .026667rem solid #efefef;
+  display: flex;
+  align-items: center;
+  font-size: .4rem;
+  color: #999;
+}
+.common-title .icon {
+  margin-right: 0.1333rem;
+} 
+.claims-services .common-title {
+  padding: .4rem .32rem;
+}
+.health-notices-title {
+  font-size: .48rem;
+  font-family: PingFangSC-Bold,sans-serif;
+  color: #333;
+  height: 1.093333rem;
+  line-height: 1.093333rem;
+  border-bottom: .026667rem solid #f5f5f5;
+  text-align: center;
+  position: relative;
+  background-color: #fff;
+}
+.health-notices-close {
+  width: .453333rem;
+  height: .453333rem;
+  position: absolute;
+  top: 50%;
+  right: .32rem;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  line-height: 1;
+}
+.health-notices-content {
+  max-height: 10.986667rem;
+  padding: .466667rem .333333rem 0;
+  overflow-y: scroll;
+  background-color: #fff;
+}
+.health-notices-operate {
+  height: 1.306667rem;
+  border-top: .026667rem solid #f5f5f5;
+  display: flex;
+}
+.health-notices-operate >a p {
+  line-height: 1;
+}
+.health-notices-operate .button {
+    flex: 1;
+    text-align: center;
+    font-size: .48rem;
+    /* line-height: 1.306667rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.health-subtitle {
+    font-size: .4rem;
+    color: #c1c1c1;
+    margin-top: .08rem;
+}
+.client-agreement-content {
+  padding-top: 1.09333333rem;
+}
+.information-main-title {
+  height: 1.093333rem;
+  line-height: 1.093333rem;
+  border-bottom: .04rem solid #f5f5f5;
+  text-align: center;
+  font-size: .48rem;
+  font-family: PingFangSC-Bold,sans-serif;
+  color: #333;
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  z-index: 999;
+}
+.product-clause-content-popup {
+  overflow-y: scroll;
+}
+.claims-services-content {
+  padding-bottom: 0.32rem;
+}

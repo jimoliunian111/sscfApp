@@ -1,0 +1,105 @@
+.main {
+  padding: 0 .333333rem 1.306667rem;
+  background: #fff;
+}
+.main>.question-title {
+  font-size: .533333rem;
+  color: #333;
+  font-family: PingFangSC-Bold,sans-serif;
+  line-height: 1;
+  padding: .4rem 0 .346667rem;
+}
+.main>.answer-content {
+  font-size: .4rem;
+  color: #333;
+  line-height: .586667rem;
+}
+.fixed-footer-button {
+  width: 100%;
+  height: 1.306667rem;
+  line-height: 1.306667rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: #ff9000;
+  text-align: center;
+  color: #fff;
+  font-size: .533333rem;
+  font-family: PingFangSC-Bold,sans-serif;
+}
+.customer-services {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.4);
+  display: none;
+}
+.customer-services.show {
+  display: block;
+}
+.customer-services>.customer-services-inner {
+  background: #fff;
+  border-radius: .266667rem;
+  max-width: 5.733334rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: .666667rem .4rem .48rem;
+  position: relative;
+  left: 50%;
+  margin-top: 4rem;
+  -webkit-transform: translate3d(-50%,100%,0);
+  transform: translate3d(-50%,100%,0);
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  opacity: 0;
+}
+.customer-services>.customer-services-inner.shown {
+  transform: translate3d(-50%,0,0);
+  opacity: 1;
+}
+.customer-services>.customer-services-inner>h3 {
+  font-size: .48rem;
+  color: #333;
+  font-family: PingFangSC-Bold,sans-serif;
+  line-height: 1;
+  padding-bottom: .2rem;
+}
+.customer-services>.customer-services-inner>p {
+  font-size: .373333rem;
+  color: #333;
+  padding-bottom: .573333rem;
+  letter-spacing: .08rem;
+}
+.customer-services>.customer-services-inner>a {
+  width: 4.773333rem;
+  height: 1.066667rem;
+  line-height: 1.066667rem;
+  background: url(../../assets/image/sinosig/wddg/tel-bg.png) no-repeat;
+  background-size: cover;
+  text-align: center;
+  font-size: .48rem;
+  font-family: PingFangSC-Bold,sans-serif;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.customer-services>.customer-services-inner>img {
+  width: .453333rem;
+  height: .453333rem;
+  position: absolute;
+  right: -.586667rem;
+  top: -.586667rem;
+}
+.customer-services>.customer-services-inner>p>span {
+  color: #ff9000;
+}

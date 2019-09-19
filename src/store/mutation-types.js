@@ -1,0 +1,4 @@
+// GET
+export const GET_PLACEHOLDER = 'GET_PLACEHOLDER'
+
+// SET

@@ -1,0 +1,49 @@
+@import '@/contract/vars.scss';
+.fixed-footer {
+    width: 100%;
+    height: $fixedFooterPremiumHeight;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 .333333rem;
+    box-sizing: border-box;
+    .premium-txt {
+        font-size: .426667rem;
+        span {
+            font-family: $PingFangBold;
+            color: #FF6600;
+        }
+    }
+    .pay-button {
+        width: 2.666667rem;
+        height: .986667rem;
+        line-height: .986667rem;
+        color: #fff;
+        border-radius: .493333rem;
+        background: linear-gradient(-20deg, #FE501C, #FFAA00);
+        text-align: center;
+        font-size: .426667rem;
+        font-family: $PingFangBold;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+    .send-policy {
+        width: 100%;
+        height: .986667rem;
+        line-height: .986667rem;
+        text-align: center;
+        color: #fff;
+        border-radius: .493333rem;
+        font-size: .426667rem;
+        font-family: $PingFangBold;
+        background: linear-gradient(20deg, #2BB7FF, #007EFF);
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}

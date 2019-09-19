@@ -1,0 +1,9 @@
+@mixin directionCenter($vertical: false, $horizontal: false) {
+    display: flex;
+    @if $horizontal {
+        align-items: center;
+    }
+    @if $vertical {
+        justify-content: center;
+    }
+}

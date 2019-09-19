@@ -1,0 +1,71 @@
+@import '@/contract/vars.scss';
+@import '@/contract/mixins.scss';
+
+.yield-info{
+  background: #fff;
+  border-radius: .266667rem;
+  margin-top: .24rem;
+  padding: .4rem .32rem 0;
+  font-family: $PingFangRegular;
+  &.font-medium{
+    font-family: $PingFangMedium;
+  }
+  .info-header{
+    font-size: .4rem;
+    color: #999;
+    line-height: 1;
+    padding: 0 0 .4rem;
+    @include directionCenter(false, true);
+    i{
+      font-size: .4rem;
+      margin-right: .146667rem;
+    }
+    .switch-box {
+      display: inline-block;
+      margin-left: 0.48rem;
+      .info-switcher {
+        display: inline-block;
+        padding: 0 .15rem;
+        margin-left: 0.2rem;
+        border-radius: 0.053333rem;
+        border: 1px solid #ccc;
+        height: .5rem;
+        line-height:.5rem;
+        &.cur {
+          border-color: #FF9000;
+          background-color: #FF9000;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .info-main{
+    .clip-button {
+      margin-left: .3rem;
+      color: #FF9000;
+      font-size: .3rem;
+    }
+    .yield-item{
+      padding: .24rem 0;
+      @include directionCenter(false, true);
+      font-size: .4rem;
+      color: #333;
+      border-top: .026667rem solid #EFEFEF;
+    }
+    .yield-name{
+      width: 2.853333rem;
+      font-weight: 500;
+    }
+    .yield-main{
+      width: 6.186667rem;
+      @include directionCenter(false, true);
+      .yield-radio{
+        padding: .173333rem .346667rem;
+        color: #FF9000;
+        border: .026667rem solid rgba(255,144,0,1);
+        border-radius: .133333rem;
+        line-height: 1;
+      }
+    }
+  }
+}
