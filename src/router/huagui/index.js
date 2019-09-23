@@ -20,7 +20,7 @@ const router = new Router({
     ...order,
     ...faq,
     ...v2order,
-    ...damai,
+    ...huagui_damai,
     {
       path: '/',
       name: 'index',
