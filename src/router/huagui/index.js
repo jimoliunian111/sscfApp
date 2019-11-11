@@ -24,7 +24,8 @@ const router = new Router({
     {
       path: '/',
       name: 'index',
-      component: () => import(/* webpackChunkName: "index" */ '@/index')
+      // component: () => import(/* webpackChunkName: "index" */ '@/index')
+      component: () => import('@/products/huagui/damai/detail/detail')
     },
     {
       path: '/crash',

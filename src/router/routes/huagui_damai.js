@@ -1,6 +1,6 @@
 export default [
   {
-      path: '/huagui/012B0500/detail',
+      path: '/detail',
       name: 'huagui_damaiDetail',
       meta: {
           title: '华贵大麦定期寿险'
@@ -8,7 +8,7 @@ export default [
       component: () => import('@/products/huagui/damai/detail/detail')
   },
   {
-      path: '/huagui/012B0500/insureInfo',
+      path: '/insureInfo',
       name: 'huagui_damaiDetail_insureInfo',
       meta: {
           title: '华贵大麦定期寿险投保页'
@@ -16,7 +16,7 @@ export default [
       component: () => import('@/products/huagui/damai/insure-info/insure-info')
   },
   {
-    path: '/huagui/012B0500/checkstand',
+    path: '/checkstand',
     name: 'huagui_damaiDetail_checkstand',
     meta: {
         title: '填写支付信息'

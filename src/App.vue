@@ -39,7 +39,7 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this.productChangeRoute();
+      // this.productChangeRoute();
     }, 500);
   },
   methods: {

@@ -44,19 +44,21 @@ function writeFile(arr, data, fileStr) {
   let obj = {}
   obj['build:all'] = arr.map(item => 'npm run build:' + item).join(' & ')
   arr.map(item => {
-    obj['build:' + item] = 'cross-env NODE_ENV=production env_config=prod route=' + item + ' node build/build.js'
+    obj['build:' + item] = 'cross-env NODE_ENV=' + runtimeStr + ' env_config=prod route=' + item + ' node build/build.js'
   })
   let fixation = {
     "dev": "node build/dev-server.js",
-    "dev:beta": "cross-env NODE_ENV=beta node build/dev-server.js",
+    "go": "node deploy/go",
+    "build:diy": "node deploy/diyBuild",
+    // "dev:beta": "cross-env NODE_ENV=beta node build/dev-server.js",
     "build:beta": "cross-env NODE_ENV=beta node build/build.js",
-    "build:dev": "cross-env NODE_ENV=development node build/build.js",
-    "beta": "node build/beta.js",
+    // "build:dev": "cross-env NODE_ENV=development node build/build.js",
+    // "beta": "node build/beta.js",
     "deploy:beta": "sh ./beta-build.sh",
     "deploy": "sh ./build.sh",
-    "start": "npm run dev",
+    // "start": "npm run dev",
     "initConf": "node deploy/initPackage",
-    "build": "node build/build.js",
+    // "build": "node build/build.js",
   }
   data.scripts = {
     ...fixation,
@@ -65,7 +67,7 @@ function writeFile(arr, data, fileStr) {
   fs.writeFileSync(fileStr, JSON.stringify(data, null, 2));
   console.log('package.json文件设置成功')
 }
-getAllDirs()
+// getAllDirs()
 
 //const ora = require('ora');
 //const spinner = ora('building for production...');
@@ -80,8 +82,24 @@ input: process.stdin,
 output: process.stdout
 });
 
-rl.question('请输入打包产品名，如huagui_damai  ', (answer) => {
-  console.log(`正在打包中...：${answer}`);
-  exec("npm run build:" + answer);
+let runtimeStr = 'production' // 打包环境
+
+
+// rl.question('请输入打包产品名，如huagui_damai  ', (answer) => {
+//   console.log(`正在打包中...：${answer}`);
+//   exec("npm run build:" + answer);
+//   rl.close();
+// });
+rl.question('请输入打包环境，beta or production(默认production)  ', (runtime) => {
+  // if (runtime === '' || runtime === undefined || runtime.length === 0 || ) {
+  //   runtime = 'production'
+  // }
+  if (runtime !== 'production' && runtime !== 'beta') {
+    console.log(`打包环境无效，默认以production设置`);
+    runtime = 'production'
+  }
+  runtimeStr = runtime
+  console.log(`正在生成配置文件`);
+  getAllDirs()
   rl.close();
 });

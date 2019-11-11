@@ -29,7 +29,10 @@ module.exports = vuxLoader.merge({
 //    : config.dev.assetsPublicPath
 //},
   context: path.resolve(__dirname, '../'),
-  entry: ["babel-polyfill", routeEntry],
+  // entry: ["babel-polyfill", routeEntry],
+  entry: {
+    app: routeEntry
+  },
   output: {
     path: routePathRoot,
     publicPath: process.env.NODE_ENV === "production" ? routeAssetsPublicPath : config.dev.assetsPublicPath

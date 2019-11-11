@@ -2,32 +2,24 @@ var path = require('path')
 var config = require('../config')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-
+const ENV_ROUTE = process.env.route; // 获取产品名
 // 根据路由进行配置
 let routePathRoot = config.build.assetsRoot;
 let routePathSubDirectory = config.build.assetsSubDirectory;
 let routeAssetsPublicPath = config.build.assetsPublicPath;
-let routeEntry = "./src/main.js";
+let routeEntry = `./src/products/${ENV_ROUTE.split('_')[0]}/${ENV_ROUTE.split('_')[1]}/${ENV_ROUTE}.js`;
 let templatePath = "index.html";
 let filename = config.build.index;
-const ENV_ROUTE = process.env.route;
 
 if (ENV_ROUTE) {
 	if (ENV_ROUTE.indexOf('_') > -1) {
 		let routeArr = ENV_ROUTE.split('_')
 		routePathRoot = config[ENV_ROUTE].assetsRoot;
-	    routePathSubDirectory = config[ENV_ROUTE].assetsSubDirectory;
-	    routeAssetsPublicPath = config[ENV_ROUTE].assetsPublicPath;
-	    routeEntry = `./src/products/${routeArr[0]}/${routeArr[1]}/${ENV_ROUTE}.js`;
-	    templatePath = path.resolve(`./src/products/${routeArr[0]}/${routeArr[1]}/${ENV_ROUTE}.html`);
-	    filename = config[ENV_ROUTE].index;
-	} else {
-	  routePathRoot = config[ENV_ROUTE].assetsRoot;
-	  routePathSubDirectory = config[ENV_ROUTE].assetsSubDirectory;
-	  routeAssetsPublicPath = config[ENV_ROUTE].assetsPublicPath;
-	  routeEntry = `./src/products/${ENV_ROUTE}/${ENV_ROUTE}.js`;
-	  templatePath = path.resolve(`./src/products/${ENV_ROUTE}/${ENV_ROUTE}.html`);
-	  filename = config[ENV_ROUTE].index;
+    routePathSubDirectory = config[ENV_ROUTE].assetsSubDirectory;
+    routeAssetsPublicPath = config[ENV_ROUTE].assetsPublicPath;
+    routeEntry = `./src/products/${routeArr[0]}/${routeArr[1]}/${ENV_ROUTE}.js`;
+    templatePath = path.resolve(`./src/products/${routeArr[0]}/${routeArr[1]}/${ENV_ROUTE}.html`);
+    filename = config[ENV_ROUTE].index;
 	}
 }
 
@@ -80,7 +72,7 @@ exports.cssLoaders = function (options) {
       loader: 'sass-resources-loader',
       options: {
         // 多个文件时用数组的形式传入，单个文件时可以直接使用 path.resolve(__dirname, '../static/style/common.scss'
-        resources: [path.resolve(__dirname, '../src/assets/css/base.scss')]  
+        resources: [path.resolve(__dirname, '../src/assets/css/base.scss')]
       }
     }]
     if (loader) {
@@ -128,6 +120,3 @@ exports.styleLoaders = function (options) {
   }
   return output
 }
-
-
-
