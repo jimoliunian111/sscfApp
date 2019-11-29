@@ -7,8 +7,8 @@ import '../../../../lib/flexible_css.js';
 // FastClick.attach(document.body);
 
 import Vue from 'vue';
-import App from './index.vue';
-import router from '@/router/huagui/xiaomai.js';
+import App from './App';
+import router from '@/router/huagui/index.js';
 import store from '@/store';
 import VueResource from 'vue-resource'
 import 'babel-polyfill'

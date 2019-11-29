@@ -7,7 +7,7 @@ const ENV_ROUTE = process.env.route; // 获取产品名
 let routePathRoot = config.build.assetsRoot;
 let routePathSubDirectory = config.build.assetsSubDirectory;
 let routeAssetsPublicPath = config.build.assetsPublicPath;
-let routeEntry = `./src/products/${ENV_ROUTE.split('_')[0]}/${ENV_ROUTE.split('_')[1]}/${ENV_ROUTE}.js`;
+let routeEntry = `./src/products/${ENV_ROUTE.split('_')[0]}/${ENV_ROUTE.split('_')[1]}/main.js`;
 let templatePath = "index.html";
 let filename = config.build.index;
 
@@ -17,8 +17,8 @@ if (ENV_ROUTE) {
 		routePathRoot = config[ENV_ROUTE].assetsRoot;
     routePathSubDirectory = config[ENV_ROUTE].assetsSubDirectory;
     routeAssetsPublicPath = config[ENV_ROUTE].assetsPublicPath;
-    routeEntry = `./src/products/${routeArr[0]}/${routeArr[1]}/${ENV_ROUTE}.js`;
-    templatePath = path.resolve(`./src/products/${routeArr[0]}/${routeArr[1]}/${ENV_ROUTE}.html`);
+    routeEntry = `./src/products/${routeArr[0]}/${routeArr[1]}/main.js`;
+    templatePath = path.resolve(`./src/products/${routeArr[0]}/${routeArr[1]}/index.html`);
     filename = config[ENV_ROUTE].index;
 	}
 }

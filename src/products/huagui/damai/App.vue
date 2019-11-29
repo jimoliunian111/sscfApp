@@ -1,5 +1,5 @@
 <template>
-  <div id="huagui_xiaomai">
+  <div id="app">
     <router-view/>
   </div>
 </template>
@@ -10,14 +10,14 @@ import { getWxConfig, getConfigure } from '@/apis';
 import { setTimeout } from 'timers';
 
 export default {
-  name: "huagui_xiaomai",
+  name: "app",
   created() {
     if (process.env.DEBUG) {
       return
     }
     getWxConfig().then(res => {
       try {
-        wx.config(res.data); 
+        wx.config(res.data);
         try {
             wx.ready(function () {
                 // wx.showOptionMenu();
@@ -39,7 +39,7 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this.productChangeRoute();
+      // this.productChangeRoute();
     }, 500);
   },
   methods: {
@@ -81,9 +81,12 @@ export default {
 </style>
 
 <style lang="less">
-@import url(./assets/font/iconfont.css);
-@import url(./assets/css/normalize.css);
-@import url(./assets/styles/common-style.css);
+// @import url(../../../../assets/font/iconfont.css);
+// @import url(../../../../assets/css/normalize.css);
+// @import url(../../../../assets/styles/common-style.css);
+@import '@/assets/font/iconfont.css';
+@import '@/assets/css/normalize.css';
+@import '@/assets/styles/common-style.css';
 .iconfont {
   font-size: 0.373333rem;
   color: #b3b3b3;
@@ -111,4 +114,3 @@ export default {
   }
 }
 </style>
-
