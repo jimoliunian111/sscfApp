@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import damaiRouters from './huagui/damai';
 
 import order from './order/order';
 import v2order from './v2/order/order';
@@ -18,7 +17,6 @@ const router = new Router({
     // },
     ...order,
     ...faq,
-    ...damaiRouters,
     ...v2order,
     {
       path: '/',

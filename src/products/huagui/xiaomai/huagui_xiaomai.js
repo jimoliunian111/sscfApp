@@ -7,7 +7,7 @@ import '../../../../lib/flexible_css.js';
 // FastClick.attach(document.body);
 
 import Vue from 'vue';
-import App from '@/App';
+import App from './index.vue';
 import router from '@/router/huagui/xiaomai.js';
 import store from '@/store';
 import VueResource from 'vue-resource'

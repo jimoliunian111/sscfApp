@@ -1,5 +1,5 @@
 <template>
-  <div id="tDamai">
+  <div id="huagui_xiaomai">
     <router-view/>
   </div>
 </template>
@@ -10,7 +10,7 @@ import { getWxConfig, getConfigure } from '@/apis';
 import { setTimeout } from 'timers';
 
 export default {
-  name: "tDamai",
+  name: "huagui_xiaomai",
   created() {
     if (process.env.DEBUG) {
       return
