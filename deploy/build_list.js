@@ -1,15 +1,5 @@
-// 要打包的产品集合
+// 要打包的产品集合  公司_产品
 module.exports = [
-  {
-    compony: 'huagui',
-    product: 'damai',
-		runtime: 'production',
-    name: 'huagui_damai'
-  },
-  {
-    compony: 'huagui',
-    product: 'xiaomai',
-		runtime: 'production',
-    name: 'huagui_xiaomai'
-  }
+ 'huagui_damai',
+ 'huagui_xiaomai'
 ]

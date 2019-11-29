@@ -1,9 +1,7 @@
 const fs = require('fs');
 require('shelljs/global');
 
-const buildList = require('./build_list.js')
-
-const list = buildList.map(item => item.name);
+const list = require('./build_list.js')
 
 var data = JSON.parse((fs.readFileSync('./package.json')).toString());
 
@@ -11,7 +9,7 @@ function setConf () {
   let obj = {}
   obj['build:all'] = list.map(item => 'npm run build:' + item).join(' & ')
   list.map(item => {
-    obj['build:' + item] = 'cross-env NODE_ENV=' + buildList[0].runtime + ' env_config=prod route=' + item + ' node build/build.js'
+    obj['build:' + item] = 'cross-env NODE_ENV=production' + ' env_config=prod route=' + item + ' node build/build.js'
   })
   let fixation = {
     "dev": "node build/dev-server.js",
