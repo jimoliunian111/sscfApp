@@ -7,7 +7,7 @@
   },
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js",
+    "dev": "cross-env NODE_ENV=production route=huagui_damai node build/dev-server.js",
     "go": "node deploy/go",
     "build:diy": "node deploy/diyBuild",
     "build:beta": "cross-env NODE_ENV=beta node build/build.js",
@@ -16,8 +16,7 @@
     "initConf": "node deploy/initPackage",
     "build:all": "npm run build:huagui_damai & npm run build:huagui_xiaomai",
     "build:huagui_damai": "cross-env NODE_ENV=production env_config=prod route=huagui_damai node build/build.js",
-    "build:huagui_xiaomai": "cross-env NODE_ENV=production env_config=prod route=huagui_xiaomai node build/build.js",
-    "build": "cross-env NODE_ENV=production env_config=prod route=huagui_damai node build/build.js"
+    "build:huagui_xiaomai": "cross-env NODE_ENV=production env_config=prod route=huagui_xiaomai node build/build.js"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
