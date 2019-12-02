@@ -18,18 +18,7 @@ function resolve (dir) {
 }
 
 module.exports = vuxLoader.merge({
-//entry: {
-//  app: './src/main.js'
-//},
-//output: {
-//  path: config.build.assetsRoot,
-//  filename: '[name].js',
-//  publicPath: process.env.NODE_ENV !== 'development'
-//    ? config.build.assetsPublicPath
-//    : config.dev.assetsPublicPath
-//},
   context: path.resolve(__dirname, '../'),
-  // entry: ["babel-polyfill", routeEntry],
   entry: {
     app: routeEntry
   },

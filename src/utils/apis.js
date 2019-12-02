@@ -1,9 +1,10 @@
 import { get, post } from './helper';
 
 // wap端接口
-const wapBaseUrl = process.env.DOMAIN;
+const wapBaseUrl = 'http://h5.beta.12354.com' || process.env.DOMAIN;
 
-const auth = process.env.AUTH ? '?developer=1' : '';
+// const auth = process.env.AUTH ? '?developer=1' : '';
+const auth = `?developer=1`
 
 
 const wapUrls = {
@@ -110,4 +111,3 @@ export const getOrderDetail = get.bind(null, wapUrls.order_detail);
 export const getAgreementContent = get.bind(null, wapUrls.agreement_content);
 
 export const getCashierDeskUrl = get.bind(null, wapUrls.cashier_desk);
-

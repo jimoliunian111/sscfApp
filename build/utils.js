@@ -35,13 +35,6 @@ exports.routeEntry = routeEntry;
 exports.templatePath = templatePath;
 exports.filename = filename;
 
-//exports.assetsPath = function (_path) {
-//var assetsSubDirectory = process.env.NODE_ENV !== 'development'
-//  ? ''
-//  : config.dev.assetsSubDirectory
-//return path.posix.join(assetsSubDirectory, _path)
-//}
-
 exports.cssLoaders = function (options) {
   options = options || {}
 

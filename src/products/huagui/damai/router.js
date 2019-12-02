@@ -45,6 +45,9 @@ const router = new Router({
     {
       path: '/',
       name: 'index',
+			meta: {
+			    title: '华贵大麦定期寿险'
+			},
       component: () => import('@/products/huagui/damai/detail/detail')
     },
     {
