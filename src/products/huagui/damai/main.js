@@ -8,7 +8,7 @@ import '../../../../lib/flexible_css.js';
 
 import Vue from 'vue';
 import App from './App';
-import router from '@/router/huagui/index.js';
+import router from './router.js';
 import store from '@/store';
 import VueResource from 'vue-resource'
 import 'babel-polyfill'
