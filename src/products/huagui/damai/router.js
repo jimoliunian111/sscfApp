@@ -2,8 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import order from '@/router/order/order';
-import v2order from '@/v2/order/order';
-import faq from '@/faq/faq';
+import v2order from '@/router/v2/order/order';
+import faq from '@/router/faq/faq';
 
 
 Vue.use(Router);

@@ -81,12 +81,12 @@ export default {
 </style>
 
 <style lang="less">
-// @import url(../../../../assets/font/iconfont.css);
-// @import url(../../../../assets/css/normalize.css);
-// @import url(../../../../assets/styles/common-style.css);
-@import '@/assets/font/iconfont.css';
-@import '@/assets/css/normalize.css';
-@import '@/assets/styles/common-style.css';
+@import url(../../../assets/font/iconfont.css);
+@import url(../../../assets/css/normalize.css);
+@import url(../../../assets/styles/common-style.css);
+// @import '@/assets/font/iconfont.css';
+// @import '@/assets/css/normalize.css';
+// @import '@/assets/styles/common-style.css';
 .iconfont {
   font-size: 0.373333rem;
   color: #b3b3b3;
