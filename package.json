@@ -7,16 +7,15 @@
   },
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=production route=pingan_anticancer2020 node build/dev-server.js",
+    "dev": "node build/dev-server.js",
     "go": "node deploy/go",
     "build:diy": "node deploy/diyBuild",
     "build:beta": "cross-env NODE_ENV=beta node build/build.js",
     "deploy:beta": "sh ./beta-build.sh",
     "deploy": "sh ./build.sh",
     "initConf": "node deploy/initPackage",
-    "build:all": "npm run build:huagui_damai & npm run build:bohai_qxwy",
-    "build:huagui_damai": "cross-env NODE_ENV=production env_config=prod route=huagui_damai node build/build.js",
-    "build:bohai_qxwy": "cross-env NODE_ENV=production env_config=prod route=bohai_qxwy node build/build.js"
+    "build:all": "npm run build:pingan_anticancer2020",
+    "build:pingan_anticancer2020": "cross-env NODE_ENV=production env_config=prod route=pingan_anticancer2020 node build/build.js"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",

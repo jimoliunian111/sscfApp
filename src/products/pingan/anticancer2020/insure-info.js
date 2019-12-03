@@ -617,7 +617,6 @@ export const insureInfo = {
       if (this.formValue.applicant.certificate.number.default) {
         this.formValue.applicant.certificate.number.default = this.formValue.applicant.certificate.number.default.toLocaleUpperCase()
       }
-      // this.formValue.renewal_info.debit_card_number.default = this.formValue.renewal_info.debit_card_number.default.toLocaleUpperCase()
 
       this.canInsure = false
       let data = {
@@ -626,7 +625,6 @@ export const insureInfo = {
       };
 
       FetchValidate([], data).then(res => {
-        console.log('FetchValidate', res)
         if (res.data.code !== 0 && !res.data.data) {
           this.$vux.toast.show({
             text: res.data.message || '网络异常',
@@ -648,7 +646,6 @@ export const insureInfo = {
           this.validatePlaceholders[type].name = validatePlaceholders[type].name;
           this.validatePlaceholders[type].isValidate = true;
         }
-        data && this.specialMsg('insure_plan_death_money', data)
       }).catch(err => {
         console.log('网络异常', err)
         this.canInsure = true
@@ -717,9 +714,6 @@ export const insureInfo = {
     },
     formChange (type, value) {
       if (!value) return;
-      if (type === 'applicant_name') {
-        this.formValue.renewal_info.account_name.default = this.formValue.applicant.name.default
-      }
 
       // 键盘顶起bug兼容
       (/iphone|ipod|ipad/i.test(navigator.appVersion)) &&
@@ -757,7 +751,7 @@ export const insureInfo = {
       this.routerLeave();
       this.$nextTick(() => {
         this.$router.push({
-          name: 'huagui_damaiDetail',
+          name: 'pingan_anticancer2020_detail',
           query: {
             scode: this.scode
           }
@@ -819,40 +813,6 @@ export const insureInfo = {
             return
           } else if (res.data.code === 0) {
             this.formValue = res.data.data; // 正常代码
-            // this.formValue = this.dataObj.data // 测试代码
-            this.getBankList()
-
-            this.insured_relation = {
-              checked: {
-                value: this.formValue.insured.relation.default
-              },
-              list: this.formValue.insured.relation.items
-            }
-
-            // 投保人身份证相关信息
-            let defaultAppliationCertificateType = this.formValue.applicant.certificate.type.default;
-            this.applicantCertificateValid = this.formValue.applicant.certificate.type.items.filter(item => item.value ===
-              defaultAppliationCertificateType)[0];
-
-            // 被保人身份证相关信息
-            let defaultInsuredCertificateType = this.formValue.insured.certificate.type.default;
-            this.insuredCertificateValid = this.formValue.insured.certificate.type.items.filter(item => item.value ===
-              defaultInsuredCertificateType)[0];
-            // 受益人相关身份证是否已经校验通过
-            this.formValue.beneficiary.default.forEach((item, index) => {
-              let data = JSON.parse(JSON.stringify(beneficiaryPlaceholders));
-              if (this.formValue.beneficiary.default[index].certificate.number) {
-                data.isCertificatePass = true;
-              }
-              let obj = {
-                checked: {
-                  value: item.relation
-                },
-                list: this.formValue.beneficiary.relation.items
-              }
-              this.beneficiary_relation.push(obj)
-              this.beneficiaryPlaceholdersArray.push(data);
-            });
             this.isInit = true;
             this.fetchCalc();
             this.$vux.loading.hide();
@@ -881,31 +841,6 @@ export const insureInfo = {
       FetchInsureData([], params).then(res => {
         if (res.data.code === 0) {
           this.formValue = res.data.data; // 正常代码
-          // this.formValue = this.dataObj.data // 测试代码
-          this.getBankList()
-          // 投保人身份证相关信息
-          let defaultAppliationCertificateType = this.formValue.applicant.certificate.type.default;
-          this.applicantCertificateValid = this.formValue.applicant.certificate.type.items.filter(item => item.value ===
-            defaultAppliationCertificateType)[0];
-
-          // 被保人身份证相关信息
-          let defaultInsuredCertificateType = this.formValue.insured.certificate.type.default;
-          this.insuredCertificateValid = this.formValue.insured.certificate.type.items.filter(item => item.value ===
-            defaultInsuredCertificateType)[0];
-
-          // 受益人相关身份证是否已经校验通过
-          this.formValue.beneficiary.default.forEach((item, index) => {
-            let data = JSON.parse(JSON.stringify(beneficiaryPlaceholders));
-            if (this.formValue.beneficiary.default[index].certificate.number) {
-              data.isCertificatePass = true;
-            }
-            let obj = {
-              checked: {value: item.relation},
-              list: this.formValue.beneficiary.relation.items
-            }
-            this.beneficiary_relation.push(obj)
-            this.beneficiaryPlaceholdersArray.push(data);
-          });
           this.isInit = true;
           this.fetchCalc();
           this.$vux.loading.hide();
@@ -995,7 +930,7 @@ export const insureInfo = {
   // 如果页面跳转到详情页，则提示弹窗
   beforeRouteLeave(to, from, next) {
     this.isCertificateModalShow = false;
-    if (to.name !== 'huagui_damaiDetail') {
+    if (to.name !== 'pingan_anticancer2020_detail') {
       next();
     } else {
       this.isLeave = true;

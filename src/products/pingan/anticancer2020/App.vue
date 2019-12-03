@@ -26,25 +26,26 @@ export default {
     }
   },
   created() {
-    if (process.env.DEBUG) {
-      return
-    }
-    if (location.pathname != '/vue/') {
-      let hasRouter = false
-      let nowHash = location.hash.match(/#(\S*)\?/) && location.hash.match(/#(\S*)\?/)[1]
-      for (let i = 0; i < this.notWx.length; i++) {
-        if (location.pathname == this.notWx[i].path && nowHash == this.notWx[i].router) {
-          hasRouter = true
-          break
-        }
-      }
-      if (!hasRouter) {
-        location.href = `${location.protocol}//${location.hostname}${location.port ? ':' + location.port : ''}/vue/${location.hash}`
-        return
-      } else {
-        return
-      }
-    }
+    console.log('9999999999', process.env)
+    // if (process.env.DEBUG) {
+    //   return
+    // }
+    // if (location.pathname != '/vue/') {
+    //   let hasRouter = false
+    //   let nowHash = location.hash.match(/#(\S*)\?/) && location.hash.match(/#(\S*)\?/)[1]
+    //   for (let i = 0; i < this.notWx.length; i++) {
+    //     if (location.pathname == this.notWx[i].path && nowHash == this.notWx[i].router) {
+    //       hasRouter = true
+    //       break
+    //     }
+    //   }
+    //   if (!hasRouter) {
+    //     location.href = `${location.protocol}//${location.hostname}${location.port ? ':' + location.port : ''}/vue/${location.hash}`
+    //     return
+    //   } else {
+    //     return
+    //   }
+    // }
     getWxConfig().then(res => {
       try {
         wx.config(res.data);

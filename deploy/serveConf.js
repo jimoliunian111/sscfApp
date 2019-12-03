@@ -2,7 +2,7 @@
 module.exports = {
   compony: 'pingan',
   product: 'anticancer2020',
-  runtime: 'production',
+  runtime: 'beta',
   name: 'pingan_anticancer2020'
 }
 

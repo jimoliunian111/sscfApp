@@ -254,7 +254,6 @@
             certificate: {
               type: applicant.certificate.type.default,
               number: applicant.certificate.number.default,
-              is_long_term: applicant.certificate.is_long_term.default
             },
             birthday: applicant.birthday.default,
             gender: applicant.gender.default,
@@ -273,11 +272,11 @@
             certificate: {
               type: insured.certificate.type.default,
               number: insured.certificate.number.default,
-              is_long_term: insured.certificate.is_long_term.default,
             },
             birthday: insured.birthday.default,
             gender: insured.gender.default,
             mobile: insured.mobile.default,
+            social_security: insured.social_security.default,
             personal_address: {
               province: insured.personal_address.province.default.id,
               city: insured.personal_address.city.default.id,
@@ -292,10 +291,6 @@
               scheme: insure_plan.scheme.default,
               additional_insurance_00003: insure_plan.additional_insurance_00003.default
             },
-          // beneficiary: {
-          //   type: beneficiary.type.default,
-          //   items: beneficiary.default
-          // },
           product_id: this.product_id
         }
       }
