@@ -81,6 +81,9 @@ export default {
 </style>
 
 <style lang="less">
+img {
+  width: 100%;
+}
 @import url(../../../assets/font/iconfont.css);
 @import url(../../../assets/css/normalize.css);
 @import url(../../../assets/styles/common-style.css);
