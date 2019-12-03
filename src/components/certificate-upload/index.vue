@@ -150,7 +150,6 @@ export default {
         const link = `${this.uploadDomain}/${data.link}`;
 
         this[`${type}Style`].background = `url(${link}) no-repeat`;
-
         this.uploadOcrFile(file_id, type);
       })
       .catch(err => {

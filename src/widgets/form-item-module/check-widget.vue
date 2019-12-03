@@ -3,8 +3,8 @@
     <div class="product-info-form-item" v-if="checkObj">
       <div class="product-info-form-item-title" :style="titleStyle">{{title}}</div>
       <div class="product-info-form-item-content">
-        
-        <div class="product-info-form-item-radio" 
+
+        <div class="product-info-form-item-radio"
             :class="{ cur: checkObj.checked.value === item.value }"
             @click="changeGender(item)" v-for="(item, idx) in checkObj.list" :key="item.value">{{item.label}}</div>
       </div>
@@ -36,6 +36,10 @@ export default {
     },
     titleStyle: {
       type: Object
+    },
+    type: {
+      type: String,
+      default: 'check-widget'
     }
   },
   data () {
@@ -50,7 +54,7 @@ export default {
     changeGender (obj) { // 单选监听
       if (this.checkObj.checked.value === obj.value) return
       this.checkObj.checked = obj
-      this.$emit('getData', obj)
+      this.$emit('getData', obj, this.type)
     }
   },
   created () {

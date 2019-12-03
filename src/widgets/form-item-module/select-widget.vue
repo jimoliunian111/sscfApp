@@ -6,11 +6,11 @@
         <div class="product-info-form-item-select" @change="selectChange">
           <select v-model="selectObj.selected.value" :disabled="disabled" :class="{ disabled: disabled }">
             <option v-for="(item, idx) in selectObj.list"
-                    :key="item.value"
+                    :key="idx"
                     :value="item.value">{{ item.label }}</option>
-            
+
           </select>
-          <img class="product-info-form-item-select-arrow" 
+          <img class="product-info-form-item-select-arrow"
                src="../../assets/image/sinosig/wddg/arr-select-icon.png">
         </div>
       </div>
@@ -43,19 +43,23 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    type: {
+      type: String,
+      default: 'select-widget'
     }
   },
   data () {
     return {
-      
+
     }
   },
   components: {
-    
+
   },
   methods: {
     selectChange () {
-      this.$emit('getData', this.selectObj.selected)
+      this.$emit('getData', this.selectObj.selected, this.type)
     }
   }
 }
@@ -64,4 +68,3 @@ export default {
 <style lang="scss" scoped>
 @import './form-item-module.scss';
 </style>
-

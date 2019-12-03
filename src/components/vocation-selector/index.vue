@@ -2,11 +2,11 @@
   <div class="vocation-container">
     <div class="occupation-inquire-title">
       <i class="icon iconfont icon-back"
-          v-if="prevVocation.length > 1" 
+          v-if="prevVocation.length > 1"
           @click="vocationBack(vocationType)">&#xe618;</i>
       <span>职业类别查询</span>
       <i class="icon iconfont icon-close" @click="vocationShow">&#xe617;</i>
-    </div> 
+    </div>
     <div class="vocation-search-box" @click="vocationSearch">
       <div class="vocation-search-input">
         <icon type="search" class="vocaiton-search-icon"></icon>
@@ -21,39 +21,39 @@
       <span v-else>
         <b>未选择</b>
       </span>
-      <p class="occupation-inquire-choice-notice" 
-          v-if="vocationSearchNumber === 4
-                && vocationSelected[vocationSelected.length - 1].level <= 4">
+      <p class="occupation-inquire-choice-notice"
+          v-if="vocationSearchNumber === (maxSearch + 1)
+                 && vocationSelected[vocationSelected.length - 1].is_valid">
         类别：{{ vocationSelected[vocationSelected.length - 1].level }}类（符合投保条件）
       </p>
-      <p class="occupation-uninquire-choice-notice" 
-          v-if="vocationSearchNumber === 4
-                && vocationSelected[vocationSelected.length - 1].level > 4">
+      <p class="occupation-uninquire-choice-notice"
+          v-if="vocationSearchNumber === (maxSearch + 1)
+                && !vocationSelected[vocationSelected.length - 1].is_valid">
         类别：{{ vocationSelected[vocationSelected.length - 1].level }}类（不符合投保条件）
       </p>
     </div>
     <div class="occupation-inquire-content">
       <div class="occupation-inquire-loading"
-            v-if="!vocationList.length && vocationSearchNumber !== 4">
+            v-if="!vocationList.length && vocationSearchNumber !== (maxSearch + 1)">
         <load-more></load-more>
       </div>
-      <div class="occupation-end" v-if="!vocationList.length && vocationSearchNumber === 4">
+      <div class="occupation-end" v-if="!vocationList.length && vocationSearchNumber === (maxSearch + 1)">
         已经到底啦
       </div>
-      <div class="occupation-inquire-content-item" 
+      <div class="occupation-inquire-content-item"
           v-for="item in vocationList"
           v-if="vocationList.length"
           :key="item.code"
           @click="vocationFetch(item, vocationType)">
         <span>{{ item.name }}</span>
-        <i class="icon iconfont icon-right-arrow" v-if="vocationSearchNumber !== 3">&#xe616;</i>
+        <i class="icon iconfont icon-right-arrow" v-if="vocationSearchNumber !== maxSearch">&#xe616;</i>
       </div>
     </div>
 
     <div v-transfer-dom>
-      <popup class="search-container" 
-             v-model="isSearchShow" 
-             position="right" 
+      <popup class="search-container"
+             v-model="isSearchShow"
+             position="right"
              @on-hide="vocationClose">
         <div class="search-header">
           <icon type="search" class="search-icon"></icon>
@@ -61,26 +61,26 @@
           <span class="search-cancel" @click="back">取消</span>
         </div>
         <div class="search-content">
-          <Loading v-if="isLoading"></Loading> 
+          <Loading v-if="isLoading"></Loading>
           <div class="search-nothing" v-if="searchTag && !searchList.length">
           <!-- <div class="search-nothing"> -->
             <img src="../../assets/image/unfind.png" alt="搜索不到结果">
             <p class="search-nothing-words">抱歉，未搜索到相关结果!</p>
           </div>
-          <div class="search-item" 
+          <div class="search-item"
                v-for="(item, index) in searchList"
                :key="index"
                @click="selectItem(item)">
             <p>{{ item.name }}</p>
-            <span class="search-item-success" v-if="item.level <= 4">
+            <span class="search-item-success" v-if="item.is_valid"> <!-- v-if="item.level <= 4"-->
               {{ item.level }}类 （符合投保条件）
             </span>
-            <span class="search-item-fail" v-if="item.level > 4">
+            <span class="search-item-fail" v-if="!item.is_valid"> <!-- v-if="item.level > 4"-->
               {{ item.level }}类 （不符合投保条件）
             </span>
           </div>
         </div>
-      </popup> 
+      </popup>
     </div>
   </div>
 </template>
@@ -103,7 +103,14 @@ export default {
     vocationList: {},
     vocationType: {},
     productId: {},
-    selectable: {}
+    selectable: {},
+    maxSearch: {
+      default: 3
+    },
+    levels: {
+    	type: String,
+      default: ''
+    }
   },
   data() {
     return {
@@ -141,7 +148,7 @@ export default {
   },
   methods: {
     selectItem(item) {
-      if (!this.selectable || item.level > 4) return;
+      if (!this.selectable || !item.is_valid) return;
 
       this.$emit('selectItem', item);
       this.isSearchShow = false;
@@ -163,6 +170,18 @@ export default {
       this.searchWords = '';
       this.searchTag = false;
     },
+    formatName (maxSearch, item, value) {
+      value = value || ''
+      value += item.name + '-'
+      if (item.parent) {
+        item = item.parent
+      }
+      if (maxSearch == 1) {
+        return value.substring(-1, value.length -1)
+      } else {
+        return this.formatName(maxSearch - 1, item, value)
+      }
+    },
     searchHandler(value) {
       this.isLoading = true;
       if (!value) {
@@ -175,17 +194,21 @@ export default {
       const data = {
         product_id: this.productId,
         name: value,
-        type: this.vocationType === 'applicant' ? 2 : 1
+        type: this.vocationType === 'applicant' ? 2 : 1,
+        grade: this.maxSearch,
+        levels: this.levels
       }
       searchProfession(data).then(res => {
           this.searchTag = true;
           const data = res.data;
           this.searchList = data.map(item => {
+            let name = this.formatName(this.maxSearch, item, '')
             return {
               id: item.id,
               level: item.level,
               origin_name: item.name,
-              name: `${item.parent.parent.name} - ${item.parent.name} - ${item.name}`
+              name: name,
+              is_valid: item.is_valid
             }
           })
           this.isLoading = false;
@@ -202,4 +225,3 @@ export default {
 <style scoped>
 @import url(./index.css);
 </style>
-

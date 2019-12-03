@@ -135,6 +135,11 @@
   transform: translateY(-50%);
   line-height: 1;
 }
+.health-notices-close img {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 .health-notices-content {
   max-height: 10.986667rem;
   padding: .466667rem .333333rem 0;
@@ -183,5 +188,5 @@
   overflow-y: scroll;
 }
 .claims-services-content {
-  padding-bottom: 0.32rem;
+  padding: .4rem .32rem;
 }

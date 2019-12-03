@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="main-tabs">
+    <div :class="['main-tabs', {'flex-item': isFlex }]">
       <div class="tab-item features" :class="{ cur: tab === 'features' }" @click="tabClick('features')">
         <span>产品特色</span>
       </div>
@@ -30,8 +30,8 @@
         <i class="icon iconfont">&#xe610;</i> 投保须知
       </div>
       <div class="insured-attentions-content"
-            v-if="source.instruction" 
-            v-html="PxToRem(source.instruction)"></div>
+            v-if="source.instruction"
+            v-html="PxToRem(source.instruction)" @click="specialOccupationListShow"></div>
       <div class="insured-attentions-more" @click="insuredMoreClick" v-if="!isMoreShow">
         <p>点击展开</p>
         <i class="icon iconfont icon-arrow">&#xe60e;</i>
@@ -47,12 +47,12 @@
         <i class="icon iconfont">&#xe611;</i> 产品条款
       </div>
       <div class="product-clause-content">
-        <div class="product-clause-content-item" 
+        <div class="product-clause-content-item"
             v-for="(item, index) in source.terms"
             :key="index"
             @click="produceClauseClick(index)">
-          {{ item.name }} 
-          <i class="icon iconfont arrow">&#xe616;</i>    
+          {{ item.name }}
+          <i class="icon iconfont arrow">&#xe616;</i>
         </div>
       </div>
     </div>
@@ -61,7 +61,7 @@
       <div class="common-title">
         <i class="icon iconfont">&#xe60b;</i> 理赔服务
       </div>
-      <div class="claims-services-content" 
+      <div class="claims-services-content"
             v-if="source.claims_service"
             v-html="PxToRem(source.claims_service)">
       </div>
@@ -117,12 +117,27 @@
           </div>
         </div>
         <div class="product-clause-content-popup" style="height: 14rem;">
-          <div class="client-agreement-content">
-            <img v-for="(item, index) in popupContentArray.images" :key="index" :src="item.file_url" alt="">
+          <div class="client-agreement-content"  v-lazy-container="{ selector: 'img' }">
+            <img v-for="(item, index) in popupContentArray.images" :key="index" :data-src="item.file_url" alt="">
           </div>
         </div>
       </popup>
     </div>
+          <!-- 健康告知特殊职位表动画浮层 -->
+      <div v-transfer-dom>
+          <popup style="height: 14rem;" v-if="listPopupShow" v-model="listPopupShow" position="bottom" should-scroll-top-on-show>
+            <div class="information-main-title">特殊职业类别表
+              <div class="health-notices-close" @click="listPopupShow = false">
+                <img src="../../assets/image/sinosig/wddg/close-icon.png">
+              </div>
+            </div>
+            <div class="product-clause-content-popup" style="height: 14rem;">
+              <div class="client-agreement-content">
+                <img v-for="(item, index) in specialOccupationList" :key="index" :src="item" alt="" >
+              </div>
+            </div>
+          </popup>
+        </div>
   </div>
 </template>
 
@@ -140,6 +155,14 @@ export default {
     source: {
       type: Object
     },
+    isFlex: {
+      default: false,
+      type: Boolean
+    },
+    isclick: {
+      default: false,
+      type: Boolean
+    },
     tabExample: {
       type: Object
     },
@@ -156,6 +179,9 @@ export default {
       isMoreShow: false,
       contentPopupShow: false,
       popupContentArray: [],
+      listPopupShow: false,
+      specialOccupationList: [],
+      equities: {},
       isCommentShow: false
     }
   },
@@ -172,11 +198,21 @@ export default {
   },
   methods: {
     PxToRem,
+    specialOccupationListShow() {
+      console.log('hhhhhhhhh');
+      if(!!this.isclick) {
+          let that = this;
+        document.querySelector('#specialOccupationListShow').onclick = function() {
+          that.listPopupShow = true;
+          that.specialOccupationList = that.equities.specialOccupationList
+        }
+      }
+    },
     shouldBodyFreeze(v) {
-      
+
       if (v) {
         this.bodyTop = document.documentElement.scrollTop || document.body.scrollTop;
-        bindFreeze(); 
+        bindFreeze();
       } else {
         unbindFreeze();
         document.documentElement.scrollTop = this.bodyTop;
@@ -255,24 +291,24 @@ export default {
     padding: 0 .22rem .32rem .22rem;
     margin-bottom: .24rem;
   }
-  .insured-example .example-box{ 
+  .insured-example .example-box{
     padding: 0.533rem 0;
     border-bottom: .026667rem solid #efefef;
   }
-  
+
   .insured-example .example-box .example-star{
     width: 0.2667rem;
     height: 0.2667rem;
     display: inline-block;
   }
-  
+
   .insured-example .example-box .example-star{
     width: 0.2667rem;
     height: 0.2667rem;
     display: inline-block;
     margin-right: 0.1866rem;
   }
-  
+
   .insured-example .example-box .example-applicant,
   .insured-example .example-box .example-insured,
   .insured-example .example-box .example-equity{
@@ -282,11 +318,11 @@ export default {
     line-height: 0.4rem;
     margin-top: 0.5333rem;
   }
-  
+
   .insured-example .example-box .example-applicant{
     margin-top: 0;
   }
-  
+
   .insured-example .example-box .example-applicant p,
   .insured-example .example-box .example-insured p,
   .insured-example .example-box .example-equity p{
@@ -297,15 +333,15 @@ export default {
     margin-top: 0.32rem;
     margin-left: 0.4533rem;
   }
-  
+
   .insured-example .example-box .example-equity p{
     margin-top: 0px;
   }
-  
+
   .insured-example .example-box .example-equity p:first-of-type{
     margin-top: 0.32rem;
   }
-  
+
   /* 用户评论 */
   .user-comment {
     background-color: #fff;
@@ -315,35 +351,35 @@ export default {
     padding: 0.533rem 0;
     border-bottom: .026667rem solid #efefef;
   }
-  
+
   .user-comment .comment-box:last-child{
     border-bottom: 0px;
   }
-  
+
   .user-comment .comment-box .auther{
     width: 0.855rem;
     height: 0.855rem;
     display: inline-block;
   }
-  
+
   .user-comment .comment-box .comment-name{
     font-size: 0.4rem;
     line-height: 0.855rem;
     display: inline-block;
     margin-left: 0.266rem;
   }
-  
+
   .user-comment .comment-box .comment-show-star{
     line-height: 0.855rem;
     margin-left: 0.266rem;
     display: inline-block;
   }
-  
+
   .user-comment .comment-box .comment-show-star img{
     width: 0.3733rem;
     height: 0.3466rem;
   }
-  
+
   .user-comment .comment-box .comment-date{
     line-height: 0.855rem;
     margin-left: 0.266rem;
@@ -352,14 +388,14 @@ export default {
     font-size: 0.4rem;
     color:rgba(153,153,153,1);
   }
-  
+
   .user-comment .comment-content{
     margin-top: 0.4rem;
     font-size: 0.3733rem;
     color:rgba(51,51,51,1);
     line-height: 0.56rem;
   }
-  
+
   .user-comment .comment-reply{
     background: rgba(239,239,239,1);
     margin-top: 0.4rem;
@@ -367,7 +403,7 @@ export default {
     position: relative;
     border-radius: 10px;
   }
-  
+
   .user-comment .comment-reply:before{
     content: '';
     width: 0.19rem;
@@ -378,7 +414,7 @@ export default {
     left: 0.5333rem;
     top: -0.095rem;
   }
-  
+
   .user-comment .comment-chech-all{
     width: 3.013rem;
     height:0.986rem;
@@ -408,6 +444,7 @@ export default {
 </style>
 <style scoped>
 @import './index.css';
+.main-tabs.flex-item .tab-item {
+  flex: 1;
+}
 </style>
-
-

@@ -2,5 +2,5 @@
 module.exports = [
  'huagui_damai',
  // 'huagui_xiaomai'
- 'bohai_qxwy'
+ // 'bohai_qxwy'
 ]

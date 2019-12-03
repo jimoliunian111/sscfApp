@@ -47,6 +47,30 @@ export default {
     name: '性别',
     isValidate: true
   },
+  applicant_personal_address_area: {
+    name: '请选择地区--区',
+    isValidate: true
+  },
+  applicant_personal_address_city: {
+    name: '请选择地区--市',
+    isValidate: true
+  },
+  applicant_personal_address_province: {
+    name: '请选择地区--省',
+    isValidate: true
+  },
+  insured_personal_address_area: {
+    name: '请选择地区--区',
+    isValidate: true
+  },
+  insured_personal_address_city: {
+    name: '请选择地区--市',
+    isValidate: true
+  },
+  insured_personal_address_province: {
+    name: '请选择地区--省',
+    isValidate: true
+  },
   applicant_personal_address_detail: {
     name: '请输入详细地址',
     isValidate: true
@@ -131,8 +155,41 @@ export default {
     name: '请选择银行',
     isValidate: true
   },
+  renewal_info_account_bank_id: {
+    name: '请选择银行',
+    isValidate: true
+  },
+  renewal_info_mobile: {
+    name: '请输入手机号码',
+    isValidate: true
+  },
+  renewal_info_captcha: {
+    name: '请输入正确的验证码',
+    isValidate: true
+  },
   certificate_valid_start_at: {
     name: '起效时间',
     isValidate: true
-  }
+  },
+	insure_plan_guarantee_quota: {
+	  name: '保障额度',
+	  isValidate: true
+	},
+	insure_plan_guarantee_period: {
+	  name: '保障期限',
+	  isValidate: true
+	},
+	insure_plan_payment_period: {
+	  name: '缴费期限',
+	  isValidate: true
+	},
+	insured_health_inform_status: {
+	  name: '健康告知系列号',
+	  isValidate: true
+	},
+	insured_health_inform_no: {
+	  name: '健康告知系列号',
+	  isValidate: true
+	}
 };
+  

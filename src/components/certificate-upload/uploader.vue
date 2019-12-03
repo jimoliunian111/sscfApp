@@ -149,6 +149,10 @@ export default {
           this.$refs.input.value = '';
           this.images.pop();
           this.images.push(response.data.data);
+        }).catch(res => {
+          if (this.$vux && this.$vux.loading) {
+            this.$vux.loading.hide();
+          }
         })
       } else {
         this.$emit('upload-image', formData);

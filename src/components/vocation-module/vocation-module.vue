@@ -4,11 +4,11 @@
       <div class="vocation-container">
         <div class="occupation-inquire-title">
           <i class="icon iconfont icon-back"
-              v-if="prevVocation && prevVocation.length > 1" 
+              v-if="prevVocation && prevVocation.length > 1"
               @click="popupBack(vocationType)">&#xe618;</i>
           <span>职业类别查询</span>
           <i class="icon iconfont icon-close" @click="closePopup">&#xe617;</i>
-        </div> 
+        </div>
         <div class="vocation-search-box" @click="vocationSearch">
           <div class="vocation-search-input">
             <icon type="search" class="vocaiton-search-icon"></icon>
@@ -23,12 +23,12 @@
           <span v-else>
             <b>未选择</b>
           </span>
-          <p class="occupation-inquire-choice-notice" 
+          <p class="occupation-inquire-choice-notice"
               v-if="vocationSearchNumber === 4
                     && vocationSelected[vocationSelected.length - 1].level <= 4">
             类别：{{ vocationSelected[vocationSelected.length - 1].level }}类（符合投保条件）
           </p>
-          <p class="occupation-uninquire-choice-notice" 
+          <p class="occupation-uninquire-choice-notice"
               v-if="vocationSearchNumber === 4
                     && vocationSelected[vocationSelected.length - 1].level > 4">
             类别：{{ vocationSelected[vocationSelected.length - 1].level }}类（不符合投保条件）
@@ -42,20 +42,20 @@
           <div class="occupation-end" v-if="!vocationList.length && vocationSearchNumber === 4">
             已经到底啦
           </div>
-          <div class="occupation-inquire-content-item" 
-              v-for="item in vocationList"
+          <div class="occupation-inquire-content-item"
+              v-for="(item, index) in vocationList"
               v-if="vocationList.length"
-              :key="item.code"
+              :key="index"
               @click="vocationFetch(item, vocationType)">
             <span>{{ item.name }}</span>
             <i class="icon iconfont icon-right-arrow" v-if="vocationSearchNumber !== 3">&#xe616;</i>
           </div>
         </div>
-      
+
         <div v-transfer-dom>
-          <popup class="search-container" 
-                 v-model="isSearchShow" 
-                 position="right" 
+          <popup class="search-container"
+                 v-model="isSearchShow"
+                 position="right"
                  @on-hide="vocationClose">
             <div class="search-header">
               <icon type="search" class="search-icon"></icon>
@@ -63,26 +63,26 @@
               <span class="search-cancel" @click="back">取消</span>
             </div>
             <div class="search-content">
-              <Loading v-if="isLoading"></Loading> 
+              <Loading v-if="isLoading"></Loading>
               <div class="search-nothing" v-if="searchTag && !searchList.length">
               <!-- <div class="search-nothing"> -->
                 <img src="../../assets/image/unfind.png" alt="搜索不到结果">
                 <p class="search-nothing-words">抱歉，未搜索到相关结果!</p>
               </div>
-              <div class="search-item" 
+              <div class="search-item"
                    v-for="(item, index) in searchList"
                    :key="index"
                    @click="selectItem(item)">
                 <p>{{ item.name }}</p>
-                <span class="search-item-success" v-if="item.level <= 4">
+                <span class="search-item-success" v-if="item.level <= level">
                   {{ item.level }}类 （符合投保条件）
                 </span>
-                <span class="search-item-fail" v-if="item.level > 4">
+                <span class="search-item-fail" v-if="item.level > level">
                   {{ item.level }}类 （不符合投保条件）
                 </span>
               </div>
             </div>
-          </popup> 
+          </popup>
         </div>
       </div>
     </popup>
@@ -115,6 +115,22 @@ export default {
     funcType: {
       type: String,
       default: 'getWapVocation'
+    },
+    searchFuncType: {
+      type: String,
+      default: 'searchProfession'
+    },
+    level: {
+      type: Number,
+      default: 6
+    },
+    isExport: {
+      type: Boolean,
+      default: false
+    },
+    verKey: {
+      type: String,
+      default: ''
     }
   },
   data () {
@@ -141,16 +157,23 @@ export default {
     // 根据传参 funcType 获取api方法
     getApiFunc (name, params) {
       const apiFunc = {
-        getWapVocation: getWapVocation([], params),
-        searchProfession: searchProfession([], params)
+        getWapVocation: getWapVocation,
+        searchProfession: searchProfession
       }
-      return apiFunc[name || this.funcType]
+      return apiFunc[name || this.funcType]([], params)
     },
     selectItem(item) { // 搜索结果列表点击事件
-      if (!this.selectable || item.level > 4) return;
-    
+      if (item.level > this.level) {
+        this.$vux.toast.show({
+          text: '该职业不符合本次投保',
+          type: 'text'
+        });
+        return
+      };
+
       this.$emit('selectItem', item);
       this.isSearchShow = false;
+      this.closePopup()
     },
     closePopup () { // 关闭浮层方法
       this.$emit('closePopup'); // 对外接口 关闭弹框后执行的方法
@@ -167,22 +190,28 @@ export default {
     initGetData (parent) {
       if (parent) this.vocationSelected.push(parent);
       const params = parent ? { product_id: this.productId, parent_id: parent.id }
-                               : { product_id: this.productId };  
-      
+                               : { product_id: this.productId };
+
       this.vocationList = [];
-      this.getApiFunc(this.funcType, params).then(({data}) => { 
+      this.getApiFunc(this.funcType, params).then(({data}) => {
         this.prevVocation.push(parent);
         this.vocationList = data.data;
         this.vocationSearchNumber += 1;
+        if (this.vocationSearchNumber === 4) {
+          if (this.isExport) {
+            this.$emit('getData', this.vocationSelected, this.verKey, this.vocationSelected.map(item => item.name).join('-'))
+            this.closePopup()
+          }
+        }
       })
     },
     prevVocationFetch(prevParent) { // 按倒退按钮执行的方法
       this.vocationSelected.pop();
-      const params = prevParent ? { product_id: this.productId, parent_id: parent.id }
-                               : { product_id: this.productId }; 
-    
+      const params = prevParent ? { product_id: this.productId, parent_id: prevParent.id }
+                               : { product_id: this.productId };
+
       this.vocationList = [];
-      this.getApiFunc(this.funcType, params).then(({data}) => { 
+      this.getApiFunc(this.funcType, params).then(({data}) => {
         this.prevVocation.pop();
         this.vocationList = data.data;
         this.vocationSearchNumber -= 1;
@@ -204,14 +233,14 @@ export default {
         this.searchTag = false;
         return;
       }
-    
+
       const data = {
         product_id: this.productId,
         name: value,
-        type: this.vocationType === 'applicant' ? 2 : 1
+        type: this.vocationType === 'applicant' ? 1 : 2
       }
       // searchProfession([], data)
-      this.getApiFunc('searchProfession', data)
+      this.getApiFunc(this.searchFuncType, data)
         .then(res => {
           this.searchTag = true;
           const data = res.data.data;
@@ -231,12 +260,12 @@ export default {
       this.isSearchShow = false;
     }
   },
-  mounted() {
+  mounted () {
     // this.$refs['searchInput'].focus();
     this.$nextTick(() => {
       document.querySelector('.search-content').style.height = `${window.innerHeight}px`;
     });
-  
+
   },
   created () {
     this.vocationFetch()

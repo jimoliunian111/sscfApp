@@ -15,8 +15,10 @@
               <i class="icon iconfont icon-arrow">{{item.itemIcon || '&#xe60e;'}}</i>
             </div>
           </div>
-          <div class="ensure-inviolable-content-item-shrink">
-            {{item.itemDesc || ''}}
+          <div class="ensure-inviolable-content-item-shrink" @click="explainClick(idx)" v-html="item.itemDesc || ''">
+          <!-- <div class="ensure-inviolable-content-item-shrink"> -->
+          <!-- <div class="ensure-inviolable-content-item-shrink" @click="showContent(item, idx)"> -->
+            <!-- {{item.itemDesc || ''}} -->
           </div>
         </div>
       </div>
@@ -56,7 +58,6 @@ export default {
   },
   data () {
     return {
-
     }
   },
   methods: {
@@ -82,6 +83,12 @@ export default {
 //       this.$nextTick(() => {
 //         this.tabLocation = document.querySelector('.main-tabs').offsetTop;
 //       });
+    },
+    explainClick (type) {
+      this.$emit('showExplain', type);
+    },
+    showContent (item, idx) {
+      this.$emit('getData', item, idx)
     }
   }
 }

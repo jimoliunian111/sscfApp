@@ -146,5 +146,13 @@ export default {
   insure_plan_payment_period: {
     name: '缴费期限',
     isValidate: true
+  },
+  insured_health_inform_status: {
+    name: '健康告知系列号',
+    isValidate: true
+  },
+  insured_health_inform_no: {
+    name: '健康告知系列号',
+    isValidate: true
   }
 };
