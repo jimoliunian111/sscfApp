@@ -14,7 +14,8 @@ const routes = [
       path: '/pingan/anticancer2020/detail/',
       name: 'pingan_anticancer2020_detail',
       meta: {
-          title: '平安抗癌卫士2020'
+          title: '平安抗癌卫士2020',
+          product: 'pingan_anticancer2020'
       },
       component: () => import('@/products/pingan/anticancer2020/detail/detail')
   },
@@ -22,7 +23,8 @@ const routes = [
       path: '/pingan/anticancer2020/insureInfo',
       name: 'pingan_anticancer2020_insureInfo',
       meta: {
-          title: '平安抗癌卫士2020投保页'
+          title: '平安抗癌卫士2020投保页',
+          product: 'pingan_anticancer2020'
       },
       component: () => import('@/products/pingan/anticancer2020/insure-info/insure-info')
   },
@@ -30,7 +32,8 @@ const routes = [
     path: '/pingan/anticancer2020/checkstand',
     name: 'pingan_anticancer2020_checkstand',
     meta: {
-        title: '填写支付信息'
+        title: '填写支付信息',
+        product: 'pingan_anticancer2020'
     },
     component: () => import('@/products/pingan/anticancer2020/check-stand/check-stand')
   },

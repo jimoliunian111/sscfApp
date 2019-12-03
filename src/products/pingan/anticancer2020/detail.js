@@ -328,7 +328,7 @@ export const detailMixin = {
     },
     jump2InsureInfo() {
       this.infoStorage()
-      this.$router.push({ name: 'pingan_anticancer2020_insureInfo'});
+      this.$router.push({ name: `${this.$route.meta.product}_insureInfo`});
       unbindFreeze();
     },
     calcAge,
@@ -353,7 +353,7 @@ export const detailMixin = {
         channel_product_id: this.channel_product_id,
         scode: this.scode
       }
-      let url = this.seturl(process.env.HEALTH_HOST + '/pingan/health-inform', params)
+      let url = this.seturl(process.env.HEALTH_HOST + '/${this.$route.meta.product.split("_")[0]}/health-inform', params)
       window.location.href = url
       // this.showWarn = true;
     },

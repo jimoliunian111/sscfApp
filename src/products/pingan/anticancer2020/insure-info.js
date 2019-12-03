@@ -461,7 +461,7 @@ export const insureInfo = {
           window.sessionStorage.setItem('uploadObj', JSON.stringify(uploadObj))
 
           this.$router.push({
-            name: 'pingan_anticancer2020_checkstand',
+            name: `${this.$route.meta.product}_checkstand`,
             query: {
               order_sn: this.order_sn
             }
@@ -666,7 +666,7 @@ export const insureInfo = {
           onConfirm: () => {
             console.log('222222222')
             that.$router.replace({
-              name: 'pingan_anticancer2020_detail',
+              name: `${this.$route.meta.product}_detail`,
               query: {
                 scode: that.scode
               }
@@ -751,7 +751,7 @@ export const insureInfo = {
       this.routerLeave();
       this.$nextTick(() => {
         this.$router.push({
-          name: 'pingan_anticancer2020_detail',
+          name: `${this.$route.meta.product}_detail`,
           query: {
             scode: this.scode
           }
@@ -803,7 +803,7 @@ export const insureInfo = {
               showCancelButton: false,
               onConfirm: () => {
                 that.$router.replace({
-                  name: 'pingan_anticancer2020_detail',
+                  name: `${this.$route.meta.product}_detail`,
                   query: {
                     scode: that.scode
                   }
@@ -854,7 +854,7 @@ export const insureInfo = {
             showCancelButton: false,
             onConfirm: () => {
               that.$router.replace({
-                name: 'pingan_anticancer2020_detail',
+                name: `${this.$route.meta.product}_detail`,
                 query: {
                   scode: that.scode
                 }
@@ -930,7 +930,7 @@ export const insureInfo = {
   // 如果页面跳转到详情页，则提示弹窗
   beforeRouteLeave(to, from, next) {
     this.isCertificateModalShow = false;
-    if (to.name !== 'pingan_anticancer2020_detail') {
+    if (to.name !== `${this.$route.meta.product}_detail`) {
       next();
     } else {
       this.isLeave = true;
