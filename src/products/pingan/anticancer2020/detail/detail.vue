@@ -177,6 +177,7 @@ export default {
         this.healthData.show = false
       } else if (this.healthData.type === 'insured') { // 这实际上已经是第二次，则为被保人健告，部分为是的话跳转第三方智能核保
         this.warn()
+        window.sessionStorage.setItem('isShowWarn', false)
       }
 
     },

@@ -88,6 +88,10 @@ export const detailMixin = {
       this.fetchAttributes()
     },
     pageInit() {
+      if (this.$route.query.health_inform_status == 'H' && !JSON.parse(sessionStorage.getItem('isShowWarn'))) {
+        this.showWarn = true
+      	sessionStorage.setItem('isShowWarn', true)
+      }
       this.isLoading = true;
       this.$vux.loading.show({
         text: '正在加载中'

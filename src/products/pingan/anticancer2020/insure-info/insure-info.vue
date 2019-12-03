@@ -267,6 +267,8 @@
             mobile: applicant.mobile.default,
           },
           insured: {
+            health_inform_no: this.$router.query.health_inform_no || '',
+            health_inform_status: this.$router.query.health_inform_status || '',
             relation: insured.relation.default,
             name: insured.name.default,
             certificate: {
@@ -277,12 +279,12 @@
             gender: insured.gender.default,
             mobile: insured.mobile.default,
             social_security: insured.social_security.default,
-            personal_address: {
-              province: insured.personal_address.province.default.id,
-              city: insured.personal_address.city.default.id,
-              area: insured.personal_address.area.default ? insured.personal_address.area.default.id : '',
-              detail: insured.personal_address.detail.default
-            }
+            // personal_address: {
+            //   province: insured.personal_address.province.default.id,
+            //   city: insured.personal_address.city.default.id,
+            //   area: insured.personal_address.area.default ? insured.personal_address.area.default.id : '',
+            //   detail: insured.personal_address.detail.default
+            // }
           },
           insure_plan: {
               guarantee_period: insure_plan.guarantee_period.default,
