@@ -267,8 +267,8 @@
             mobile: applicant.mobile.default,
           },
           insured: {
-            health_inform_no: this.$router.query.health_inform_no || '',
-            health_inform_status: this.$router.query.health_inform_status || '',
+            health_inform_no: this.$router.query && this.$router.query.health_inform_no || '',
+            health_inform_status: this.$router.query && this.$router.query.health_inform_status || '',
             relation: insured.relation.default,
             name: insured.name.default,
             certificate: {

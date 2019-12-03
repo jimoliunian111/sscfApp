@@ -49,6 +49,10 @@ const router = new Router({
     {
       path: '/',
       name: 'index',
+      meta: {
+        title: '平安抗癌卫士2020',
+        product: 'pingan_anticancer2020'
+      },
       component: () => import(/* webpackChunkName: "index" */ '@/products/pingan/anticancer2020/detail/detail')
     },
     {
