@@ -24,7 +24,7 @@ const buildList = { //
   env: buildEnv,
   index: path.resolve(__dirname, `../dist/${routeArr[0]}/${routeArr[1]}/index.html`),
   assetsRoot: path.resolve(__dirname, `../dist/${routeArr[0]}/${routeArr[1]}`),
-  assetsSubDirectory: "./static",
+  assetsSubDirectory: "./",
   assetsPublicPath: `./`,
   productionSourceMap: false,
   devtool: "#source-map",
