@@ -6,7 +6,6 @@ import order from '@/router/order/order';
 import v2order from '@/router/v2/order/order';
 import faq from '@/router/faq/faq';
 
-import payRouters from '@/router/pay/pay'
 
 Vue.use(Router);
 
@@ -43,7 +42,6 @@ const router = new Router({
     ...order,
     ...faq,
     ...v2order,
-    ...payRouters,
     ...routes,
     {
       path: '/',

@@ -48,8 +48,9 @@ module.exports = merge(buildRouteConfig, {
     proxyTable: {
       '/api/trajectory': {
         // target: 'http://product.service.cfb.com/',
-        // target: 'http://m.proxy.cfb.com/',
-        target: 'http://h5.beta.12354.com',
+        target: 'http://m.proxy.cfb.com',
+        // target: 'http://h5.beta.12354.com',
+        // target: 'http://lgw.m.proxy.cfb.com',
         changeOrigin: true,
         autoRewrite: true,
         logLevel: 'debug',
@@ -58,6 +59,18 @@ module.exports = merge(buildRouteConfig, {
         }
       },
       '/api/api/api/v1': {
+        // target: 'http://product.service.cfb.com/',
+        target: 'http://m.proxy.cfb.com',
+        // target: 'http://h5.beta.12354.com',
+        // target: 'http://lgw.m.proxy.cfb.com',
+        changeOrigin: true,
+        autoRewrite: true,
+        logLevel: 'debug',
+        pathRewrite: {
+          '^/api/api': ''
+        }
+      },
+      '/api/api/api/v2': {
         // target: 'http://product.service.cfb.com/',
         // target: 'http://m.proxy.cfb.com/',
         target: 'http://h5.beta.12354.com',
@@ -70,8 +83,9 @@ module.exports = merge(buildRouteConfig, {
       },
       '/api': {
         // target: 'http://product.service.cfb.com/',
-        // target: 'http://m.proxy.cfb.com/',
-        target: 'http://h5.beta.12354.com',
+        target: 'http://m.proxy.cfb.com',
+        // target: 'http://h5.beta.12354.com',
+        // target: 'http://lgw.m.proxy.cfb.com',
         changeOrigin: true,
         autoRewrite: true,
         logLevel: 'debug',
