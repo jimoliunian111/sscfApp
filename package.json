@@ -7,7 +7,7 @@
   },
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=production route=huagui_damai node build/dev-server.js",
+    "dev": "cross-env NODE_ENV=production route=pingan_anticancer2020 node build/dev-server.js",
     "go": "node deploy/go",
     "build:diy": "node deploy/diyBuild",
     "build:beta": "cross-env NODE_ENV=beta node build/build.js",

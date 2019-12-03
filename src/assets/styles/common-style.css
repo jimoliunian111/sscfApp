@@ -147,3 +147,96 @@
   width: .186667rem;
   height: .346667rem;
 }
+
+.product-info-form-item {
+  display: flex;
+  align-items: center;
+  border-top: .026667rem solid #efefef;
+  height: 1.146667rem;
+  left: 1.146667rem;
+}
+.product-info-form-item.area {
+  /* height: 1.5rem; */
+}
+.product-info-form-item.area .product-tips {
+  font-size: 0.32rem;
+  color: #ccc;
+  width: 8rem;
+}
+.product-info-form-item-title {
+  font-size: .373333rem;
+  color: #333;
+  width: 5rem;
+}
+.product-info-form-item-content {
+  width: 11.066667rem;
+  font-size: .373333rem;
+  color: #333;
+  display: flex;
+  justify-content: flex-end;
+}
+.product-info-form-item-content select {
+  border: 0;
+  outline: 0;
+  font-size: .373333rem;
+  color: #333;
+  background: none;
+  -webkit-appearance: none;
+}
+.product-info-form-item-content .datepicker {
+  display: inline-block;
+  position: relative;
+  margin-right: .2rem;
+  width: 2.8rem;
+  height: .6rem;
+  padding: 0 !important;
+  z-index: 1;
+}
+.product-info-form-item-radio {
+  padding: 0 .32rem;
+  float: left;
+  height: .72rem;
+  line-height: .72rem;
+  box-sizing: border-box;
+  border: .026667rem solid #efefef;
+  margin-left: .293333rem;
+  border-radius: .133333rem;
+}
+.product-info-form-item-radio.cur {
+  color: #ff9000;
+  border-color: #ff9000;
+}
+.product-info-form-item-vocation {
+  color: #ff9000;
+  margin-left: .426667rem;
+}
+.product-info-form-item-select {
+  position: relative;
+  /* width: 1.4rem; */
+  padding: 0 .24rem 0 .373333rem;
+  border: .026667rem solid #efefef;
+  height: .666667rem;
+  line-height: .666667rem;
+  border-radius: .133333rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-info-form-item-select.short {
+  width: 1rem;
+}
+.product-info-form-item-select .select-cover {
+  position: absolute;
+  left: .3rem;
+}
+.product-info-form-item-select .select-cover::after {
+  position: absolute;
+  top: 0.25rem;
+  right: -.4rem;
+  content: '';
+  height: 0;
+  width: 0;
+  border-width: .12rem;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
+}

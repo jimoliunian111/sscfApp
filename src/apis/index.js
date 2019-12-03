@@ -279,7 +279,7 @@ export function searchProfession (params) {
 }
 
 
-// 获取订单详情 /v1/insurance/product/distribution/insure/renew/mobile/captcha
+// 获取待支付订单详情 /v1/insurance/product/distribution/insure/renew/mobile/captcha
 export function getOrderDetail (params) {
   return Vue.http.get('/api/v2/insurance/order/distribution/cashier-desk/attributes', {params}, {emulateJSON: true}).then(res => {
     if (typeof res.data === 'object' && res.data.code === 0) {
@@ -370,9 +370,60 @@ export function forward (params) {
   })
 }
 
+// 第三方智能核保 api/v1/insurance/health/third-party/situation/list
+export function healthSituation (params) {
+  return Vue.http.post('/api/v1/insurance/health/third-party/situation/list', params, {emulateJSON: true}).then(res => {
+    if (typeof res.data === 'object' && res.data.code === 0) {
+      return Promise.resolve(res.data)
+    } else {
+      return Promise.reject(res)
+    }
+  }).catch(err => {
+    return Promise.reject(err)
+  })
+}
+
+// 健康告知页面 /api/v2/insurance/product/health-inform-result
+export function getHealthData (params) {
+  return Vue.http.get('/api/v2/insurance/product/health-inform-result', { params }, {emulateJSON: true}).then(res => {
+    if (typeof res.data === 'object' && res.data.code === 0) {
+      return Promise.resolve(res.data)
+    } else {
+      return Promise.reject(res)
+    }
+  }).catch(err => {
+    return Promise.reject(err)
+  })
+}
 // 职业
 export function getApplicantVocation(params) {
-  return Vue.http.post('/api/v1/insurance/product/applicant/profession/list', params, {emulateJSON: true}).then(res => {
+  return Vue.http.post('/api/v1/insurance/product/applicant/profession/list', params, { emulateJSON: true }).then(res => {
+    if (typeof res.data === 'object' && res.data.code === 0) {
+      return Promise.resolve(res.data)
+    } else {
+      return Promise.reject(res)
+    }
+  }).catch(err => {
+    return Promise.reject(err)
+  })
+}
+
+// 订单详情 /api/v1/insurance/order/distribution/detail
+export function getOrderInfo (params) {
+  return Vue.http.get('/api/v1/insurance/order/distribution/detail', {params}, {emulateJSON: true}).then(res => {
+    if (typeof res.data === 'object' && res.data.code === 0) {
+      return Promise.resolve(res.data)
+    } else {
+      return Promise.reject(res)
+    }
+  }).catch(err => {
+    return Promise.reject(err)
+  })
+}
+
+// 回访确认 /api/v1/insurance/order/distribution/visit
+export function visit (params) {
+  return Vue.http.post('/api/v1/insurance/order/distribution/visit', params, {emulateJSON: true}).then(res => {
     if (typeof res.data === 'object' && res.data.code === 0) {
       return Promise.resolve(res.data)
     } else {
@@ -384,11 +435,115 @@ export function getApplicantVocation(params) {
 }
 
 export function getBankDistrict (params) {
-  return Vue.http.post('/api/v1/insurance/product/bank/district/list', params, {emulateJSON: true}).then(res => {
+  return Vue.http.get('/api/v1/insurance/product/bank/district/list',  { params }, {emulateJSON: true}).then(res => {
     if (typeof res.data === 'object' && res.data.code === 0) {
       return Promise.resolve(res.data)
     } else {
       return Promise.reject(res)
+    }
+  }).catch(err => {
+    return Promise.reject(err)
+  })
+}
+
+// 问答全部 /api/v1/insurance/product/faq/all
+export function getFaqAll (params) {
+  return Vue.http.get('/api/v2/insurance/product/faq/all', {params}, {emulateJSON: true}).then(res => {
+    if (typeof res.data === 'object') {
+      return Promise.resolve(res.data)
+    } else {
+      return Promise.reject(res)
+    }
+  }).catch(err => {
+    return Promise.reject(err)
+  })
+}
+
+// 上传图片
+export function getFilePath (params) {
+  return Vue.http.get(env.UPLOADDOMAIN + '/api/files/path', { params }, {emulateJSON: true}).then(res => {
+    if (typeof res.data === 'object' && res.data.code === 0) {
+      return Promise.resolve(res.data)
+    } else {
+      return Promise.reject(res)
+    }
+  }).catch(err => {
+    return Promise.reject(err)
+  })
+}
+
+// 上传图片
+export function getUploadImg (params) {
+  return Vue.http.post(env.UPLOADDOMAIN + '/api/files/upload', params).then(res => {
+    if (typeof res.data === 'object' && res.data.code === 0) {
+      return Promise.resolve(res.data)
+    } else {
+      return Promise.reject(res)
+    }
+  }).catch(err => {
+    return Promise.reject(err)
+  })
+}
+
+// 上传图片
+export function uploadOcrFile (params) {
+  return Vue.http.post('/api/v1/insurance/order/distribution/upload-ocr-files', params, {emulateJSON: true}).then(res => {
+    if (typeof res.data === 'object') {
+      return Promise.resolve(res.data)
+    } else {
+      return Promise.reject(res)
+    }
+  }).catch(err => {
+    return Promise.reject(err)
+  })
+}
+
+// 获取服务器时间
+export function getTimeNow (params) {
+  return Vue.http.get('/common/time/now',  { params }, {emulateJSON: true}).then(res => {
+    if (typeof res.data === 'object' && res.data.code === 0) {
+      return Promise.resolve(res.data)
+    } else {
+      return Promise.reject(res)
+    }
+  }).catch(err => {
+    return Promise.reject(err)
+  })
+}
+
+// 平安健康 验证短信 签约 /api/v2/insurance/order/distribution/verify-sms
+export function verifySms (params) {
+  return Vue.http.post('/api/v2/insurance/order/distribution/verify-sms', params, {emulateJSON: true}).then(res => {
+    if (typeof res.data === 'object' && res.data.code === 0) {
+      return Promise.resolve(res.data)
+    } else {
+      return Promise.reject(res)
+    }
+  }).catch(err => {
+    return Promise.reject(err)
+  })
+}
+
+// 平安健康 快捷签约 获取短信 /api/v2/insurance/order/distribution/get-fast-contract-sms
+export function getFastContractSms (params) {
+  return Vue.http.post('/api/v2/insurance/order/distribution/get-fast-contract-sms', params, {emulateJSON: true}).then(res => {
+    if (typeof res.data === 'object' && res.data.code === 0) {
+      return Promise.resolve(res.data)
+    } else {
+      return Promise.reject(res)
+    }
+  }).catch(err => {
+    return Promise.reject(err)
+  })
+}
+
+// 平安健康 查询是否签约 /api/v2/insurance/order/distribution/query-contract
+export function queryContract (params) {
+  return Vue.http.post('/api/v2/insurance/order/distribution/query-contract', params, {emulateJSON: true}).then(res => {
+    if (typeof res.data === 'object') {
+      return Promise.resolve(res.data)
+    } else {
+      return Promise.reject(res.data)
     }
   }).catch(err => {
     return Promise.reject(err)

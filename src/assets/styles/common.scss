@@ -1,0 +1,17 @@
+@import './main.scss';
+.common-tool-style {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  width: rem(160);
+  img {
+    width: rem(60);
+    height: rem(60);
+  }
+  .home-icon-style {
+    width: rem(60);
+    height: rem(60);
+  }
+}

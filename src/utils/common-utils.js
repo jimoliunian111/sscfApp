@@ -1,7 +1,7 @@
 /**
  * 根据key找出对应枚举的值并返回
- * @param {*} key 
- * @param {*} enumLists 
+ * @param {*} key
+ * @param {*} enumLists
  */
 export const matchEnumData = (key, enumLists) => {
     return enumLists.hasOwnProperty(key) ? enumLists[key] : '';
@@ -9,16 +9,18 @@ export const matchEnumData = (key, enumLists) => {
 
 /**
  * 遍历对象找出对应的key和value并返回
- * @param {*} dataObject 
- * @param {*} enumLists 
+ * @param {*} dataObject
+ * @param {*} enumLists
  */
 export const matchEnumDataByObject = (dataObject, enumLists) => {
     let data = {};
     let keyArr = Object.keys(enumLists);
     keyArr.forEach(k => {
-        data[k] = {
-            title: enumLists[k],
-            value: dataObject[k] || '-'
+        if (dataObject[k] != 0 && dataObject[k] != '') {
+            data[k] = {
+                title: enumLists[k],
+                value: dataObject[k] || '-'
+            }   
         }
     });
     return data;
@@ -26,7 +28,7 @@ export const matchEnumDataByObject = (dataObject, enumLists) => {
 
 /**
  * 根据时间戳转换成一个日期时间对象
- * @param {*} timeStr 
+ * @param {*} timeStr
  */
 export const getDateByStr = (timeStr) => {
     const date = new Date(timeStr);
@@ -42,7 +44,7 @@ export const getDateByStr = (timeStr) => {
 
 /**
  * 日期格式化 19920314 转为 1992年03月14日
- * @param {*} str 
+ * @param {*} str
  */
 export const formatDate = (str) => {
     str = String(str);
@@ -51,7 +53,7 @@ export const formatDate = (str) => {
 
 /**
  * Px单位转为Rem单位
- * @param {*} Str 
+ * @param {*} Str
  */
 export const PxToRem = (Str) => {
     var reg = /:\s*([\d\.]+)px/gi;
@@ -69,18 +71,19 @@ export const PxToRem = (Str) => {
  * 根据出生日期算出年龄
  * @param {*} Str  eg: '2012-12-11'
  */
-export const calcAge = (strBirthday) => {       
+export const calcAge = (strBirthday) => {
+    if (!strBirthday) return -1
     var returnAge;
     var strBirthdayArr=strBirthday.split("-");
     var birthYear = strBirthdayArr[0];
     var birthMonth = strBirthdayArr[1];
     var birthDay = strBirthdayArr[2];
-    
+
     var d = new Date();
     var nowYear = d.getFullYear();
     var nowMonth = d.getMonth() + 1;
     var nowDay = d.getDate();
-    
+
     if(nowYear == birthYear){
         returnAge = 0;//同年 则为0岁
     }
@@ -116,7 +119,7 @@ export const calcAge = (strBirthday) => {
             returnAge = -1;//返回-1 表示出生日期输入错误 晚于今天
         }
     }
-    
+
     return returnAge;//返回周岁年龄
-    
+
   }

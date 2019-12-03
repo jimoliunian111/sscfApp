@@ -1,8 +1,8 @@
 // 要运行的产品
 module.exports = {
-  compony: 'huagui',
-  product: 'damai',
+  compony: 'pingan',
+  product: 'anticancer2020',
   runtime: 'production',
-  name: 'huagui_damai'
+  name: 'pingan_anticancer2020'
 }
 

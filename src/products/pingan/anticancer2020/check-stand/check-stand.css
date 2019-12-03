@@ -1,0 +1,208 @@
+.main, .main>div {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.main {
+  padding: 0 .16rem;
+}
+.main>div {
+  margin-top: .24rem;
+  border-radius: .266667rem;
+  background: #fff;
+}
+.notice {
+  line-height: 1;
+  text-align: center;
+  padding: .293333rem 0;
+  font-size: .346667rem;
+  color: #999;
+}
+.notice>span {
+  color: #f94040;
+}
+.info {
+  padding: 0 .32rem;
+  font-size: .4rem;
+  color: #333;
+}
+.info .info-item {
+  border-bottom: .026667rem solid #efefef;
+  padding: .4rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.info .info-item .info-item-title {
+  width: 2.853333rem;
+}
+.account-info-wrapper {
+  padding: 0 .32rem;
+  background: #fff;
+}
+.account-info-wrapper .account-info-title {
+  padding: .4rem 0;
+  line-height: 1;
+  font-size: .4rem;
+  color: #999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.account-info-wrapper .account-item {
+  border-top: .026667rem solid #efefef;
+  padding: .266667rem 0;
+  font-size: .4rem;
+  color: #333;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 1.5;
+}
+.account-info-wrapper .account-item .account-item-title {
+  width: 32%;
+}
+.account-info-wrapper .account-item .account-item-content {
+  width: 68%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.account-info-wrapper .account-item .account-item-content input {
+  width: 100%;
+}
+.account-info-wrapper .account-item .account-item-content.drop-down-lists {
+  /* color: #999; */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: relative;
+}
+.account-info-wrapper .account-item .account-item-content select {
+  -webkit-appearance: none;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  font-family: PingFangSC-Regular,sans-serif!important;
+  background: transparent;
+  z-index: 204;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-right: .533333rem;
+}
+.pay-button {
+  font-size: .426667rem;
+  color: #fff;
+  background: linear-gradient(110deg,#fa0,#ff9000);
+  width: 100%;
+  height: .986667rem;
+  line-height: .986667rem;
+  border-radius: .493333rem;
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  font-family: PingFangSC-Bold,sans-serif;
+}
+.arrow-right-icon {
+  position: absolute;
+  right: 0;
+  width: .186667rem;
+  height: .346667rem;
+}
+.product-clause-content-popup {
+  /* height: 10rem; */
+  background-color: #fff;
+}
+.product-clause-content-popup .region-title {
+  line-height: 1;
+  font-size: .48rem;
+  color: #333;
+  text-align: center;
+  padding: .413333rem 0 .706667rem;
+}
+.product-clause-content-popup .region-selected {
+  line-height: 1;
+  font-size: .4rem;
+  color: #333;
+  padding: 0 .533333rem;
+  border-bottom: .026667rem solid #f0f0f0;
+}
+.region-selected>span.cur:after {
+  content: "";
+  width: .533333rem;
+  height: .106667rem;
+  border-radius: .053333rem;
+  position: absolute;
+  left: 50%;
+  bottom: -.026667rem;
+  transform: translateX(-50%);
+  background: #ff9000;
+}
+.region-selected .selected {
+  display: block;
+}
+.region-lists {
+  height: 8.906667rem;
+  max-height: 8.906667rem;
+  overflow-y: scroll;
+  width: 100%;
+  box-sizing: border-box;
+  padding: .666667rem .533333rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+.region-lists .region-lists-loading {
+  padding-top: 2rem;
+}
+.region-lists .region-list-item {
+  line-height: 1;
+  font-size: .4rem;
+  color: #333;
+  padding-bottom: .8rem;
+}
+.region-selected span {
+  margin-right: .8rem;
+  padding-bottom: .32rem;
+  position: relative;
+  height: 100%;
+  float: left;
+  display: none;
+}
+.region-selected span.cur {
+  color: #ff9000;
+  display: block;
+}
+.waiting {
+  position: relative;
+  background: #ccc;
+}
+.result-loading {
+  position: absolute;
+  right: 0;
+  top: .2rem;
+  right: -.5rem;
+  margin-top: 0;
+}
+.pay-way-box .weui-cell {
+  padding: 20px 15px;
+}

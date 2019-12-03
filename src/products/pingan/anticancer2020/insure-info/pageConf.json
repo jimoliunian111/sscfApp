@@ -1,0 +1,1298 @@
+{
+  "code": 0,
+  "message": "success!",
+  "data": {
+    "applicant": {
+      "name": {
+        "name": "投保人姓名",
+        "type": "string",
+        "default": ""
+      },
+      "certificate": {
+        "type": {
+          "name": "证件类型",
+          "type": "integer",
+          "default": 1,
+          "items": [{
+            "label": "身份证",
+            "value": 1,
+            "valid_start_at": {
+              "min": "1999-08-30",
+              "max": "2019-08-29"
+            },
+            "is_long_term": [{
+                "label": "长期",
+                "value": 1
+              },
+              {
+                "label": "选择有效期",
+                "value": 0
+              }
+            ],
+            "valid_end_at": {
+              "min": "2019-08-30",
+              "max": "2039-08-29"
+            }
+          }, {
+            "label": "护照",
+            "value": 2,
+            "valid_start_at": {
+              "min": "1999-08-30",
+              "max": "2019-08-29"
+            },
+            "is_long_term": [{
+                "label": "长期",
+                "value": 1
+              },
+              {
+                "label": "选择有效期",
+                "value": 0
+              }
+            ],
+            "valid_end_at": {
+              "min": "2019-08-30",
+              "max": "2039-08-29"
+            }
+          }]
+        },
+        "number": {
+          "name": "证件号码",
+          "type": "string",
+          "default": ""
+        },
+        "valid_start_at": {
+          "name": "起效时间",
+          "type": "date",
+          "default": ""
+        },
+        "is_long_term": {
+          "name": "失效时期",
+          "type": "integer",
+          "default": 0
+        },
+        "valid_end_at": {
+          "name": "失效时间",
+          "type": "date",
+          "default": ""
+        }
+      },
+      "birthday": {
+        "name": "出生日期",
+        "type": "date",
+        "default": "",
+        "min": "2001-08-29",
+        "min_tip": "投保人年龄必须大于等于18周岁！",
+        "max": "1938-08-29",
+        "max_tip": "投保人年龄必须小于等于80周岁！"
+      },
+      "gender": {
+        "name": "性别",
+        "type": "integer",
+        "default": 2,
+        "items": [{
+            "label": "男",
+            "value": 1
+          },
+          {
+            "label": "女",
+            "value": 2
+          }
+        ]
+      },
+      "mobile": {
+        "default": "",
+        "name": "手机号码",
+        "type": "string"
+      },
+      "personal_address": {
+        "province": {
+          "default": {
+            "id": "",
+            "name": ""
+          },
+          "name": "所在城市 - 省",
+          "type": "array"
+        },
+        "city": {
+          "default": {
+            "id": "",
+            "name": ""
+          },
+          "name": "所在城市 - 市",
+          "type": "array"
+        },
+        "area": {
+          "name": "所在城市 - 区",
+          "default": {
+            "id": "",
+            "name": ""
+          },
+          "type": "array"
+        },
+        "detail": {
+          "default": "",
+          "name": "所在城市 - 详情地址",
+          "type": "string"
+        },
+        "zip_code": {
+          "default": "",
+          "name": "邮政编码",
+          "type": "string"
+        }
+      },
+      "email": {
+        "default": "",
+        "name": "电子邮箱",
+        "type": "string"
+      },
+      "profession": {
+        "name": "职业",
+        "type": "array",
+        "default": {
+          "id": 0,
+          "name": "",
+          "code": "",
+          "level": null,
+          "supplier_id": null
+        },
+        "allow_levels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "default": []
+    },
+    "insured": {
+      "relation": {
+        "name": "为谁投保",
+        "type": "integer",
+        "default": "",
+        "items": [{
+            "label": "本人",
+            "value": 1,
+            "min_birthday": "2001-08-29",
+            "max_birthday": "1959-08-30"
+          },
+          {
+            "label": "父母",
+            "value": 2,
+            "min_birthday": "2019-07-30",
+            "max_birthday": "2001-08-30"
+          },
+          {
+            "label": "配偶",
+            "value": 3,
+            "min_birthday": "2019-07-30",
+            "max_birthday": "2001-08-30"
+          },
+          {
+            "label": "子女",
+            "value": 4,
+            "min_birthday": "2019-07-30",
+            "max_birthday": "2001-08-30"
+          }
+        ]
+      },
+      "name": {
+        "name": "被保人姓名",
+        "type": "string",
+        "default": ""
+      },
+      "certificate": {
+        "type": {
+          "name": "证件类型",
+          "type": "integer",
+          "default": 1,
+          "items": [{
+            "label": "身份证",
+            "value": 1,
+            "valid_start_at": {
+              "min": "1999-08-30",
+              "max": "2019-08-29"
+            },
+            "is_long_term": [{
+                "label": "长期",
+                "value": 1
+              },
+              {
+                "label": "选择有效期",
+                "value": 0
+              }
+            ],
+            "valid_end_at": {
+              "min": "2019-08-30",
+              "max": "2039-08-29"
+            }
+          }]
+        },
+        "number": {
+          "name": "证件号码",
+          "type": "string",
+          "default": ""
+        },
+        "valid_start_at": {
+          "name": "起效时间",
+          "type": "date",
+          "default": ""
+        },
+        "is_long_term": {
+          "name": "失效时期",
+          "type": "integer",
+          "default": 0
+        },
+        "valid_end_at": {
+          "name": "失效时间",
+          "type": "date",
+          "default": ""
+        }
+      },
+      "birthday": {
+        "default": "2001-08-29",
+        "name": "出生日期",
+        "type": "date",
+        "min": "2001-08-29",
+        "max": "1958-08-30",
+        "min_tip": "被保人年龄必须大于等于18周岁！",
+        "max_tip": "投保人年龄必须小于等于60周岁！"
+      },
+      "gender": {
+        "name": "性别",
+        "type": "integer",
+        "default": "2",
+        "items": [{
+            "label": "男",
+            "value": 1
+          },
+          {
+            "label": "女",
+            "value": 2
+          }
+        ]
+      },
+      "mobile": {
+        "default": "",
+        "name": "手机号码",
+        "type": "string"
+      },
+      "social_security": {
+        "name": "有无社保",
+        "type": "integer",
+        "default": "0",
+        "items": [{
+            "label": "有",
+            "value": 1
+          },
+          {
+            "label": "无",
+            "value": 0
+          }
+        ]
+      },
+      "personal_address": {
+        "province": {
+          "default": {
+            "id": "25677",
+            "name": "北京市"
+          },
+          "name": "所在城市 - 省",
+          "type": "integer"
+        },
+        "city": {
+          "default": {
+            "id": "25678",
+            "name": "市辖区"
+          },
+          "name": "所在城市 - 市",
+          "type": "integer"
+        },
+        "area": {
+          "name": "所在城市 - 区",
+          "default": {
+            "id": "25679",
+            "name": "东城区"
+          },
+          "type": "string"
+        },
+        "detail": {
+          "default": "",
+          "name": "所在城市 - 详情地址",
+          "type": "string"
+        },
+        "zip_code": {
+          "default": "",
+          "name": "邮政编码",
+          "type": "string"
+        }
+      },
+      "profession": {
+        "name": "职业",
+        "type": "array",
+        "default": {
+          "id": 12890,
+          "name": "民主党派和社会团体及其工作机构负责人-群众自治组织负责人-群众自治组织负责人",
+          "code": "1030301",
+          "level": 1,
+          "supplier_id": 14
+        },
+        "allow_levels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "height": {
+        "name": "身高",
+        "type": "numeric",
+        "default": ""
+      },
+      "weight": {
+        "name": "体重",
+        "type": "numeric",
+        "default": ""
+      },
+      "annual_income": {
+        "name": "年收入",
+        "type": "numeric",
+        "default": "",
+        "items": {
+          "label": ">=5万",
+          "value": 50000
+        },
+        "age_limit": [{
+            "min": 18,
+            "max": 35,
+            "times": 20
+          },
+          {
+            "min": 36,
+            "max": 45,
+            "times": 15
+          },
+          {
+            "min": 46,
+            "max": 60,
+            "times": 10
+          }
+        ]
+      }
+    },
+    "beneficiary": {
+      "default": [],
+      "type": {
+        "name": "受益人",
+        "type": "integer",
+        "default": 1,
+        "items": [{
+            "label": "法定受益人",
+            "value": 1
+          },
+          {
+            "label": "指定受益人",
+            "value": 2
+          }
+        ]
+      },
+      "relation": {
+        "name": "受益是被保人的",
+        "type": "integer",
+        "default": "",
+        "items": [{
+            "label": "父母",
+            "value": 2
+          },
+          {
+            "label": "配偶",
+            "value": 3
+          },
+          {
+            "label": "子女",
+            "value": 4
+          }
+        ]
+      },
+      "name": {
+        "name": "姓名",
+        "type": "string",
+        "default": ""
+      },
+      "certificate": {
+        "type": {
+          "name": "证件类型",
+          "type": "integer",
+          "default": 1,
+          "items": [{
+            "label": "身份证",
+            "value": 1,
+            "is_long_term": [{
+                "label": "长期",
+                "value": 1
+              },
+              {
+                "label": "选择有效期",
+                "value": 0
+              }
+            ],
+            "valid_end_at": {
+              "min": "2019-08-30",
+              "max": "2039-08-29"
+            }
+          }]
+        },
+        "number": {
+          "name": "证件号码",
+          "type": "string",
+          "default": ""
+        },
+        "valid_start_at": {
+          "name": "起效时间",
+          "type": "date",
+          "default": ""
+        },
+        "is_long_term": {
+          "name": "失效时期",
+          "type": "integer",
+          "default": 0
+        },
+        "valid_end_at": {
+          "name": "失效时间",
+          "type": "date",
+          "default": ""
+        }
+      },
+      "benefit_percent": {
+        "name": "受益比例",
+        "type": "integer",
+        "default": 0,
+        "items": [{
+            "label": "10%",
+            "value": 10
+          },
+          {
+            "label": "20%",
+            "value": 20
+          },
+          {
+            "label": "30%",
+            "value": 30
+          },
+          {
+            "label": "40%",
+            "value": 40
+          },
+          {
+            "label": "50%",
+            "value": 50
+          },
+          {
+            "label": "60%",
+            "value": 60
+          },
+          {
+            "label": "70%",
+            "value": 70
+          },
+          {
+            "label": "80%",
+            "value": 80
+          },
+          {
+            "label": "90%",
+            "value": 90
+          },
+          {
+            "label": "100%",
+            "value": 100
+          }
+        ]
+      },
+      "max": 3
+    },
+    "renewal_info": {
+      "account_name": {
+        "name": "帐户开户名",
+        "type": "string",
+        "default": ""
+      },
+      "id_card_number": {
+        "name": "身份证号",
+        "type": "string",
+        "default": ""
+      },
+      "bank_district": {
+        "province": {
+          "name": "银行地区 - 省",
+          "default": "",
+          "type": "integer"
+        },
+        "city": {
+          "name": "银行地区 - 市",
+          "default": "",
+          "type": "integer"
+        }
+      },
+      "account_bank": {
+        "name": "开户银行",
+        "type": "integer",
+        "default": {
+          "id": "0",
+          "name": "",
+          "code": "0",
+          "supplier_id": 0
+        },
+        "items": [{
+            "code": "0101",
+            "name": "工商银行"
+          },
+          {
+            "code": "0102",
+            "name": "农业银行"
+          },
+          {
+            "code": "0103",
+            "name": "中国银行"
+          },
+          {
+            "code": "0104",
+            "name": "建设银行"
+          },
+          {
+            "code": "0115",
+            "name": "招商银行"
+          },
+          {
+            "code": "0105",
+            "name": "贵州银行"
+          },
+          {
+            "code": "0116",
+            "name": "兴业银行"
+          }
+        ]
+      },
+      "account_bank_code": {
+        "name": "开户银行编码",
+        "type": "string",
+        "default": ""
+      },
+      "account_bank_name": {
+        "name": "开户银行名",
+        "type": "string",
+        "default": ""
+      },
+      "debit_card_number": {
+        "name": "借记卡号",
+        "type": "string",
+        "default": ""
+      }
+    },
+    "insure_plan": {
+      "guarantee_period": {
+        "name": "保障期限",
+        "type": "integer",
+        "unit": 4,
+        "default": "60",
+        "items": [{
+            "label": "10年",
+            "value": 10,
+            "age_limit": [{
+              "min": 18,
+              "max": 60,
+              "items": [{
+                  "label": "10年交",
+                  "unit": 3,
+                  "value": 10
+                },
+                {
+                  "label": "5年交",
+                  "unit": 3,
+                  "value": 5
+                },
+                {
+                  "label": "一次性交",
+                  "unit": 5,
+                  "value": 1
+                }
+              ]
+            }]
+          },
+          {
+            "label": "20年",
+            "value": 20,
+            "age_limit": [{
+              "min": 18,
+              "max": 50,
+              "items": [{
+                  "label": "20年交",
+                  "unit": 3,
+                  "value": 20
+                },
+                {
+                  "label": "10年交",
+                  "unit": 3,
+                  "value": 10
+                },
+                {
+                  "label": "5 年交",
+                  "unit": 3,
+                  "value": 5
+                },
+                {
+                  "label": "一次性交",
+                  "unit": 5,
+                  "value": 1
+                }
+              ]
+            }]
+          },
+          {
+            "label": "30年",
+            "value": 30,
+            "age_limit": [{
+              "min": 18,
+              "max": 40,
+              "items": [{
+                  "label": "30年交",
+                  "unit": 3,
+                  "value": 30
+                },
+                {
+                  "label": "20年交",
+                  "unit": 3,
+                  "value": 20
+                },
+                {
+                  "label": "10年交",
+                  "unit": 3,
+                  "value": 10
+                },
+                {
+                  "label": "5 年交",
+                  "unit": 3,
+                  "value": 5
+                },
+                {
+                  "label": "一次性交",
+                  "unit": 5,
+                  "value": 1
+                }
+              ]
+            }]
+          },
+          {
+            "label": "至60周岁",
+            "value": 60,
+            "age_limit": [{
+                "min": 18,
+                "max": 30,
+                "items": [{
+                    "label": "30年交",
+                    "unit": 3,
+                    "value": 30
+                  },
+                  {
+                    "label": "20年交",
+                    "unit": 3,
+                    "value": 20
+                  },
+                  {
+                    "label": "10年交",
+                    "unit": 3,
+                    "value": 10
+                  },
+                  {
+                    "label": "5 年交",
+                    "unit": 3,
+                    "value": 5
+                  },
+                  {
+                    "label": "一次性交",
+                    "unit": 5,
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "min": 18,
+                "max": 40,
+                "items": [{
+                    "label": "20年交",
+                    "unit": 3,
+                    "value": 20
+                  },
+                  {
+                    "label": "10年交",
+                    "unit": 3,
+                    "value": 10
+                  },
+                  {
+                    "label": "5 年交",
+                    "unit": 3,
+                    "value": 5
+                  },
+                  {
+                    "label": "一次性交",
+                    "unit": 5,
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "min": 18,
+                "max": 50,
+                "items": [{
+                    "label": "10年交",
+                    "unit": 3,
+                    "value": 10
+                  },
+                  {
+                    "label": "5 年交",
+                    "unit": 3,
+                    "value": 5
+                  },
+                  {
+                    "label": "一次性交",
+                    "unit": 5,
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "至65周岁",
+            "value": 65,
+            "age_limit": [{
+                "min": 18,
+                "max": 35,
+                "items": [{
+                    "label": "30年交",
+                    "unit": 3,
+                    "value": 30
+                  },
+                  {
+                    "label": "20年交",
+                    "unit": 3,
+                    "value": 20
+                  },
+                  {
+                    "label": "10年交",
+                    "unit": 3,
+                    "value": 10
+                  },
+                  {
+                    "label": "5 年交",
+                    "unit": 3,
+                    "value": 5
+                  },
+                  {
+                    "label": "一次性交",
+                    "unit": 5,
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "min": 18,
+                "max": 45,
+                "items": [{
+                    "label": "20年交",
+                    "unit": 3,
+                    "value": 20
+                  },
+                  {
+                    "label": "10年交",
+                    "unit": 3,
+                    "value": 10
+                  },
+                  {
+                    "label": "5 年交",
+                    "unit": 3,
+                    "value": 5
+                  },
+                  {
+                    "label": "一次性交",
+                    "unit": 5,
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "min": 18,
+                "max": 55,
+                "items": [{
+                    "label": "10年交",
+                    "unit": 3,
+                    "value": 10
+                  },
+                  {
+                    "label": "5 年交",
+                    "unit": 3,
+                    "value": 5
+                  },
+                  {
+                    "label": "一次性交",
+                    "unit": 5,
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "至70周岁",
+            "value": 70,
+            "age_limit": [{
+                "min": 18,
+                "max": 40,
+                "items": [{
+                    "label": "30年交",
+                    "unit": 3,
+                    "value": 30
+                  },
+                  {
+                    "label": "20年交",
+                    "unit": 3,
+                    "value": 20
+                  },
+                  {
+                    "label": "10年交",
+                    "unit": 3,
+                    "value": 10
+                  },
+                  {
+                    "label": "5 年交",
+                    "unit": 3,
+                    "value": 5
+                  },
+                  {
+                    "label": "一次性交",
+                    "unit": 5,
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "min": 18,
+                "max": 50,
+                "items": [{
+                    "label": "20年交",
+                    "unit": 3,
+                    "value": 20
+                  },
+                  {
+                    "label": "10年交",
+                    "unit": 3,
+                    "value": 10
+                  },
+                  {
+                    "label": "5 年交",
+                    "unit": 3,
+                    "value": 5
+                  },
+                  {
+                    "label": "一次性交",
+                    "unit": 5,
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "min": 18,
+                "max": 55,
+                "items": [{
+                    "label": "10年交",
+                    "unit": 3,
+                    "value": 10
+                  },
+                  {
+                    "label": "5 年交",
+                    "unit": 3,
+                    "value": 5
+                  },
+                  {
+                    "label": "一次性交",
+                    "unit": 5,
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "min": 18,
+                "max": 60,
+                "items": [{
+                    "label": "5 年交",
+                    "unit": 3,
+                    "value": 5
+                  },
+                  {
+                    "label": "一次性交",
+                    "unit": 5,
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "guarantee_quota": {
+        "name": "保障额度",
+        "type": "integer",
+        "default": "100000",
+        "items": [{
+          "label": "10万",
+          "value": 100000
+        }],
+        "city_limit": {
+          "cate_a_city": {
+            "city": [
+              110100,
+              310100,
+              440100,
+              440300,
+              330100,
+              330200,
+              320100,
+              320500,
+              510100,
+              420100,
+              500100,
+              350200
+            ],
+            "age_limit": [{
+                "min": 18,
+                "max": 40,
+                "social_security_limit": [{
+                    "label": "200万",
+                    "value": 2000000
+                  },
+                  {
+                    "label": "300万",
+                    "value": 3000000
+                  }
+                ]
+              },
+              {
+                "min": 41,
+                "max": 50,
+                "social_security_limit": [{
+                    "label": "150万",
+                    "value": 1500000
+                  },
+                  {
+                    "label": "200万",
+                    "value": 2000000
+                  }
+                ]
+              },
+              {
+                "min": 51,
+                "max": 60,
+                "social_security_limit": [{
+                    "label": "80万",
+                    "value": 800000
+                  },
+                  {
+                    "label": "100万",
+                    "value": 1000000
+                  }
+                ]
+              }
+            ]
+          },
+          "cate_b_city": {
+            "city": [
+              120100,
+              130100,
+              130200,
+              130600,
+              130900,
+              140100,
+              150100,
+              150200,
+              210100,
+              210200,
+              220100,
+              220200,
+              230100,
+              230600,
+              320200,
+              320300,
+              320400,
+              320600,
+              320800,
+              320900,
+              321000,
+              321100,
+              321200,
+              330300,
+              330400,
+              330600,
+              330700,
+              331000,
+              340100,
+              340200,
+              350100,
+              350500,
+              350600,
+              360100,
+              370100,
+              370200,
+              370300,
+              370500,
+              370600,
+              370700,
+              370800,
+              370900,
+              371000,
+              371300,
+              371400,
+              371500,
+              371600,
+              371700,
+              410100,
+              410300,
+              420500,
+              430100,
+              430700,
+              440400,
+              440600,
+              440700,
+              440800,
+              440900,
+              441300,
+              441900,
+              442000,
+              450100,
+              450200,
+              460100,
+              510700,
+              520100,
+              520300,
+              530100,
+              610100,
+              620100,
+              630100,
+              640100,
+              650100,
+              131000,
+              430200
+            ],
+            "age_limit": [{
+                "min": 18,
+                "max": 40,
+                "social_security_limit": [{
+                    "label": "150万",
+                    "value": 1500000
+                  },
+                  {
+                    "label": "200万",
+                    "value": 2000000
+                  }
+                ]
+              },
+              {
+                "min": 41,
+                "max": 50,
+                "social_security_limit": [{
+                    "label": "100万",
+                    "value": 1000000
+                  },
+                  {
+                    "label": "100万",
+                    "value": 1500000
+                  }
+                ]
+              },
+              {
+                "min": 51,
+                "max": 60,
+                "social_security_limit": [{
+                    "label": "50万",
+                    "value": 500000
+                  },
+                  {
+                    "label": "80万",
+                    "value": 800000
+                  }
+                ]
+              }
+            ]
+          },
+          "cate_other_city": {
+            "age_limit": [{
+                "min": 18,
+                "max": 40,
+                "social_security_limit": [{
+                    "label": "100万",
+                    "value": 1000000
+                  },
+                  {
+                    "label": "150万",
+                    "value": 1500000
+                  }
+                ]
+              },
+              {
+                "min": 41,
+                "max": 50,
+                "social_security_limit": [{
+                    "label": "50万",
+                    "value": 500000
+                  },
+                  {
+                    "label": "100万",
+                    "value": 1000000
+                  }
+                ]
+              },
+              {
+                "min": 51,
+                "max": 60,
+                "social_security_limit": [{
+                    "label": "30万",
+                    "value": 300000
+                  },
+                  {
+                    "label": "50万",
+                    "value": 500000
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "profession_limit": {
+          "2099907": {
+            "label": "50万",
+            "value": 500000
+          },
+          "3020102": {
+            "label": "30万",
+            "value": 300000
+          },
+          "3020103": {
+            "label": "30万",
+            "value": 300000
+          },
+          "3020104": {
+            "label": "30万",
+            "value": 300000
+          },
+          "3020105": {
+            "label": "30万",
+            "value": 300000
+          },
+          "3020106": {
+            "label": "30万",
+            "value": 300000
+          },
+          "3020108": {
+            "label": "30万",
+            "value": 300000
+          },
+          "3020110": {
+            "label": "50万",
+            "value": 500000
+          },
+          "4071203": {
+            "label": "50万",
+            "value": 500000
+          },
+          "8000001": {
+            "label": "30万",
+            "value": 300000
+          },
+          "8000002": {
+            "label": "30万",
+            "value": 300000
+          },
+          "8000003": {
+            "label": "30万",
+            "value": 300000
+          }
+        }
+      },
+      "payment_period": {
+        "name": "缴费期限",
+        "type": "array",
+        "default": 20,
+        "items": [{
+            "label": "一次性交",
+            "unit": 5,
+            "value": 1
+          },
+          {
+            "label": "5年交",
+            "unit": 3,
+            "value": 5
+          },
+          {
+            "label": "10年交",
+            "unit": 3,
+            "value": 10
+          },
+          {
+            "label": "20年交",
+            "unit": 3,
+            "value": 20
+          },
+          {
+            "label": "30年交",
+            "unit": 3,
+            "value": 30
+          }
+        ]
+      },
+      "insure_start_at": {
+        "name": "起保日期",
+        "type": "date",
+        "default": "2019-08-30"
+      },
+      "insure_plan": {
+        "name": "保障计划",
+        "default": 1,
+        "items": [{
+            "label": "计划一",
+            "value": 1
+          },
+          {
+            "label": "计划二",
+            "value": 2
+          },
+          {
+            "label": "计划三",
+            "value": 3
+          }
+        ]
+      },
+      "additional_insurance_00002": {
+        "name": "特定恶性肿瘤药品费用保险金",
+        "type": "integer",
+        "default": 2,
+        "items": [{
+            "label": "含",
+            "value": 1
+          },
+          {
+            "label": "不含",
+            "value": 2
+          }
+        ]
+      }
+    },
+    "product": {
+      "name": "前行无忧"
+    }
+  },
+  "time": 1567071514,
+  "module": "cfb-product-proxy"
+}
