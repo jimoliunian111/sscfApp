@@ -31,7 +31,7 @@
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
     "vux": "^2.9.2",
-    "shelljs": "^0.8.3",
+    "shelljs": "^0.8.5",
     "vux-uploader": "^0.1.9"
   },
   "devDependencies": {
@@ -75,7 +75,7 @@
     "sass-loader": "^7.1.0",
     "sass-resources-loader": "^2.0.0",
     "semver": "^5.3.0",
-    "shelljs": "^0.7.8",
+    "shelljs": "^0.8.5",
     "style-loader": "^0.23.1",
     "stylus-loader": "^3.0.2",
     "uglifyjs-webpack-plugin": "^1.1.1",
